@@ -83,19 +83,14 @@ class HomeWindow(QtGui.QWidget):
         #self.grid.addWidget(self.label_gear, 0,9,3,2)
 
         font = QtGui.QFont('Times', 20, QtGui.QFont.Bold)
+
         self.button_menu = make_button(
-            'Menu', self, font, (200, 69), (600, 411), 'background-color: rgb(43,21,0); color: rgb(255,184,0)')
+            'Menu', self, font, (200, 69), (600, 411))
         #self.grid.addWidget(self.button_menu, 8,8,1,3)
 
-        self.button_diffLock = QtGui.QPushButton('Diff Lock', self)
-        font = QtGui.QFont('Times',20,QtGui.QFont.Bold)
-        self.button_diffLock.setStyleSheet('background-color: rgb(43,21,0); color: rgb(255,184,0)')
-        # nfont.setStyleSheet('background-color: rgb(255,184,0); color: rgb(')
-        self.button_diffLock.setFont(font)
-        self.button_diffLock.clicked.connect(self.diffLockToggle)
-        self.button_diffLock.resize(200,69)
-        self.button_diffLock.move(600, 242)
-        #self.grid.addWidget(self.button_menu, 8,8,1,3)
+        self.button_difflock = make_button(
+            'Diff Lock', self, font, (200, 69), (600, 242))
+
 
         self.label_message = QtGui.QLabel('Engine Not On', self)
         self.label_message.setFont(QtGui.QFont('Times',14,QtGui.QFont.Bold))

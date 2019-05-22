@@ -14,7 +14,7 @@ import Menu as MenuWindow
 import Settings as SettingsWindow
 import Diagnostics as DiagnosticsWindow
 
-os.chdir(os.getcwd()+'/P18')
+os.chdir(os.getcwd()+'/P19')
 
 class MainWindow(QtGui.QMainWindow):
     def __init__(self, parent = None):

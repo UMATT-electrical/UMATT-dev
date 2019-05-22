@@ -3,6 +3,7 @@ import compassWidget2 as CW
 import barWidget as BW
 import time
 import os
+from widgets import make_button
 
 class SettingsWindow(QtGui.QWidget):
     
@@ -26,17 +27,11 @@ class SettingsWindow(QtGui.QWidget):
         self.move(0,0)
         #self.grid.addWidget(self.label_message, 0,4,1,3)
 
-        self.button_home = QtGui.QPushButton('Home', self)
-        self.button_home.setStyleSheet('background-color: rgb(43,21,0); color: rgb(255,184,0)')
-        self.button_home.setFont((QtGui.QFont('Times',20,QtGui.QFont.Bold)))
-        self.button_home.resize(200,69)
-        self.button_home.move(600, 411)
+        self.button_home = make_button(
+            'Home', self, size=(200, 69), location=(600, 411))
 
-        self.button_menu = QtGui.QPushButton('Menu', self)
-        self.button_menu.setStyleSheet('background-color: rgb(43,21,0); color: rgb(255,184,0)')
-        self.button_menu.setFont((QtGui.QFont('Times',20,QtGui.QFont.Bold)))
-        self.button_menu.resize(200,69)
-        self.button_menu.move(0, 411)
+        self.button_menu = make_button(
+            'Menu', self, size=(200, 69), location=(0, 411))
 
         self.label_Mode = QtGui.QLabel('Mode', self)
         self.font1 = QtGui.QFont('Times',40,QtGui.QFont.Bold)
@@ -46,17 +41,12 @@ class SettingsWindow(QtGui.QWidget):
         self.label_Mode.resize(200, 69)
         self.label_Mode.move(500,50)
 
-        self.button_modeManeuver = QtGui.QPushButton('Maneuverbility Mode', self)
-        self.button_modeManeuver.setStyleSheet('background-color: rgb(43,21,0); color: rgb(255,184,0)')
-        self.button_modeManeuver.setFont((QtGui.QFont('Times',15,QtGui.QFont.Bold)))
-        self.button_modeManeuver.resize(240,69)
-        self.button_modeManeuver.move(480, 150)
 
-        self.button_modePull = QtGui.QPushButton('Pulling Mode', self)
-        self.button_modePull.setStyleSheet('background-color: rgb(43,21,0); color: rgb(255,184,0)')
-        self.button_modePull.setFont((QtGui.QFont('Times',15,QtGui.QFont.Bold)))
-        self.button_modePull.resize(240,69)
-        self.button_modePull.move(480, 250)
+        self.button_menu = make_button(
+            'Maneuverbility Mode', self, size=(240, 69), location=(480, 150))
+
+        self.button_modePull = make_button(
+            'Pulling Mode', self, size=(240, 69), location=(480, 250))
 
         '''self.updateTimer = QtCore.QTimer()
         self.updateTimer.timeout.connect(self.updateDiffDial)

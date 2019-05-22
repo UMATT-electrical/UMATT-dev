@@ -4,6 +4,8 @@ import barWidget as BW
 import time
 import os
 
+from widgets import make_button
+
 captureTime = 1
 
 class HomeWindow(QtGui.QWidget):
@@ -80,13 +82,9 @@ class HomeWindow(QtGui.QWidget):
         self.label_gear.move(667,0)
         #self.grid.addWidget(self.label_gear, 0,9,3,2)
 
-        self.button_menu = QtGui.QPushButton('Menu', self)
-        font = QtGui.QFont('Times',20,QtGui.QFont.Bold)
-        self.button_menu.setStyleSheet('background-color: rgb(43,21,0); color: rgb(255,184,0)')
-        # nfont.setStyleSheet('background-color: rgb(255,184,0); color: rgb(')
-        self.button_menu.setFont(font)
-        self.button_menu.resize(200,69)
-        self.button_menu.move(600, 411)
+        font = QtGui.QFont('Times', 20, QtGui.QFont.Bold)
+        self.button_menu = make_button(
+            'Menu', self, font, (200, 69), (600, 411), 'background-color: rgb(43,21,0); color: rgb(255,184,0)')
         #self.grid.addWidget(self.button_menu, 8,8,1,3)
 
         self.button_diffLock = QtGui.QPushButton('Diff Lock', self)

@@ -27,3 +27,21 @@ def make_compass_widget(
     compass._pointText = point_text
     compass.setStyleSheet(style_sheet)
     return compass
+
+
+def make_label(
+        parent,
+        text,
+        size=(100, 100),
+        position=(100, 100),
+        font=QtGui.QFont('Times', 90, QtGui.QFont.Bold),
+        alignment=QtCore.Qt.AlignCenter,
+        style_sheet='background-color: rgb(43,21,0); color: rgb(255,184,0)'
+):
+    label = QtGui.QLabel(text, parent)
+    label.setStyleSheet(style_sheet)
+    label.setFont(font)
+    label.setAlignment(alignment)
+    label.resize(*size)
+    label.move(*position)
+    return label

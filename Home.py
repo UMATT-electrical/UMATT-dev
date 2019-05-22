@@ -4,7 +4,7 @@ import barWidget as BW
 import time
 import os
 
-from widgets import make_button
+from widgets import make_button, make_compass_widget
 
 captureTime = 1
 
@@ -25,15 +25,13 @@ class HomeWindow(QtGui.QWidget):
 
         self.grid.setSpacing(0)
 
-        self.dialGauge_engineSpeed = CW.CompassWidget()
-        self.dialGauge_engineSpeed.setAngle(225)
-        self.dialGauge_engineSpeed.resize(168,168)
-        self.dialGauge_engineSpeed._backText = 'Engine'
-        self.dialGauge_engineSpeed._pointText = {0:'3', 45:'4', 90:'5', 135:'6', 225:'0', 270:'1', 315:'2'}
-        #self.dialGauge_engineSpeed.move(67, 103)
-        self.dialGauge_engineSpeed.setStyleSheet('background-color: rgba(0,0,0,0%)')
-        self.grid.addWidget(self.dialGauge_engineSpeed, 1, 1,2,1)
-        #self.grid.addWidget(self.dialGauge_engineSpeed, 4, 3,1,1)
+        self.dial_gauge_engine_speed = make_compass_widget(
+            'Engine',
+            {0: '3', 45: '4', 90: '5', 135: '6', 225: '0', 270: '1', 315: '2'},
+            (168, 168),
+            225,
+            'background-color: rgba(0,0,0,0%)')
+        self.grid.addWidget(self.dial_gauge_engine_speed, 1, 1, 2, 1)
 
         self.dialGauge_motorSpeed = CW.CompassWidget()
         self.dialGauge_motorSpeed.setAngle(225)

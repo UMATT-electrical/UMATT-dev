@@ -1,4 +1,5 @@
 from PyQt4 import QtGui, QtCore
+import compassWidget2 as CW
 
 
 def make_button(
@@ -15,3 +16,14 @@ def make_button(
     button.resize(*size)
     button.move(*location)
     return button
+
+
+def make_compass_widget(
+        back_text, point_text, size=(100, 100), angle=0, style_sheet='background-color: rgba(0,0,0,0%)'):
+    compass = CW.CompassWidget()
+    compass.setAngle(angle)
+    compass.resize(*size)
+    compass._backText = back_text
+    compass._pointText = point_text
+    compass.setStyleSheet(style_sheet)
+    return compass

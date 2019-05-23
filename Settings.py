@@ -12,9 +12,9 @@ class SettingsWindow(QtGui.QWidget):
         # initialize basic window function
         super(SettingsWindow, self).__init__()
 
-        self.initUI()
         self.make_label = lambda *args, **kwargs: make_label(self, *args, **kwargs)
         self.make_button = lambda *args, **kwargs: make_button(self, *args, **kwargs)
+        self.initUI()
 
     def initUI(self):
         currentTime = time.ctime().split()[3].split(':')

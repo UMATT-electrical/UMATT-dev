@@ -16,8 +16,8 @@ class HomeWindow(QtGui.QWidget):
 
         self.ScreenTimer = time.time()
         
-        self.initUI()
         self.make_button = lambda *args, **kwargs: make_button(self, *args, **kwargs)
+        self.initUI()
 
 
     def initUI(self):

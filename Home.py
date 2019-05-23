@@ -3,7 +3,7 @@ import compassWidget2 as CW
 import barWidget as BW
 import time
 import os
-import SCREEN
+from constants import SCREEN
 
 from widgets import make_button, make_compass_widget, make_label
 

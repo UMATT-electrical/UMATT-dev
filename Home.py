@@ -17,6 +17,7 @@ class HomeWindow(QtGui.QWidget):
         self.ScreenTimer = time.time()
         
         self.initUI()
+        self.make_button = lambda *args, **kwargs: make_button(self, *args, **kwargs)
 
 
     def initUI(self):
@@ -82,12 +83,10 @@ class HomeWindow(QtGui.QWidget):
 
         font = QtGui.QFont('Times', 20, QtGui.QFont.Bold)
 
-        self.button_menu = make_button(
-            'Menu', self, font, (200, 69), (600, 411))
+        self.button_menu = self.make_button('Menu', font, (200, 69), (600, 411))
         #self.grid.addWidget(self.button_menu, 8,8,1,3)
 
-        self.button_difflock = make_button(
-            'Diff Lock', self, font, (200, 69), (600, 242))
+        self.button_difflock = self.make_button('Diff Lock', font, (200, 69), (600, 242))
 
 
         self.label_message = QtGui.QLabel('Engine Not On', self)

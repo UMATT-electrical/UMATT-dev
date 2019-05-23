@@ -3,7 +3,8 @@ import compassWidget2 as CW
 import barWidget as BW
 import time
 import os
-from widgets import make_button
+from widgets import make_button, make_label
+
 
 class SettingsWindow(QtGui.QWidget):
     
@@ -12,41 +13,25 @@ class SettingsWindow(QtGui.QWidget):
         super(SettingsWindow, self).__init__()
 
         self.initUI()
-
+        self.make_label = lambda *args, **kwargs: make_label(self, *args, **kwargs)
+        self.make_button = lambda *args, **kwargs: make_button(self, *args, **kwargs)
 
     def initUI(self):
         currentTime = time.ctime().split()[3].split(':')
-        if int(currentTime[0])>12:
-            self.label_time = QtGui.QLabel('%d:%s PM'%(int(currentTime[0])-12,currentTime[1]), self)
-        else:
-            self.label_time = QtGui.QLabel('%d:%s AM'%(int(currentTime[0]),currentTime[1]), self)
-        self.label_time.setFont(QtGui.QFont('Times',20,QtGui.QFont.Bold))
-        self.label_time.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_time.resize(167, 69)
-        self.label_time.setStyleSheet('background-color: rgb(43,21,0); color: rgb(255,184,0)')
-        self.move(0,0)
-        #self.grid.addWidget(self.label_message, 0,4,1,3)
+        time_label = ('%d:%s PM'%(int(currentTime[0])-12, currentTime[1]) if
+                      int(currentTime[0]) > 12 else
+                      '%d:%s AM'%(int(currentTime[0]), currentTime[1]))
+        self.label_time = self.make_label(time_label, (167, 69), (0 ,0), QtGui.QFont('Times', 20, QtGui.QFont.Bold))
 
-        self.button_home = make_button(
-            'Home', self, size=(200, 69), location=(600, 411))
+        self.button_home = self.make_button('Home', size=(200, 69), location=(600, 411))
 
-        self.button_menu = make_button(
-            'Menu', self, size=(200, 69), location=(0, 411))
+        self.button_menu = self.make_button('Menu', size=(200, 69), location=(0, 411))
 
-        self.label_Mode = QtGui.QLabel('Mode', self)
-        self.font1 = QtGui.QFont('Times',40,QtGui.QFont.Bold)
-        self.font1.setUnderline(True)
-        self.label_Mode.setFont(self.font1)
-        self.label_Mode.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_Mode.resize(200, 69)
-        self.label_Mode.move(500,50)
+        self.label_Mode = self.make_label('Mode', (200, 69), (500, 50), QtGui.QFont('Times',  40,QtGui.QFont.Bold))
 
+        self.button_modeManeuver = self.make_button('Maneuverbility Mode', size=(240, 69), location=(480, 150))
 
-        self.button_modeManeuver = make_button(
-            'Maneuverbility Mode', self, size=(240, 69), location=(480, 150))
-
-        self.button_modePull = make_button(
-            'Pulling Mode', self, size=(240, 69), location=(480, 250))
+        self.button_modePull = self.make_button('Pulling Mode', size=(240, 69), location=(480, 250))
 
         '''self.updateTimer = QtCore.QTimer()
         self.updateTimer.timeout.connect(self.updateDiffDial)

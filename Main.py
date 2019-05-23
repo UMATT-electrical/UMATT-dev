@@ -17,7 +17,7 @@ import Diagnostics as DiagnosticsWindow
 os.chdir(os.getcwd()+'/P19')
 
 class MainWindow(QtGui.QMainWindow):
-    def __init__(self, parent = None):
+    def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
 
         #INITIALIZE VARIABLES

@@ -13,11 +13,11 @@ import Home as HomeWindow
 import Menu as MenuWindow
 import Settings as SettingsWindow
 import Diagnostics as DiagnosticsWindow
-from constants import Gear
-
 
 class MainWindow(QtGui.QMainWindow):
     def __init__(self, parent=None):
+        from constants import Gear
+
         super(MainWindow, self).__init__(parent)
 
         #INITIALIZE VARIABLES

@@ -22,12 +22,6 @@ class DiagnosticsWindow(QtGui.QWidget):
                       int(currentTime[0]) > 12 else
                       '%d:%s AM' % (int(currentTime[0]), currentTime[1]))
         self.label_time = self.make_label(time_label, (167, 69), (0, 0), QtGui.QFont('Times', 20, QtGui.QFont.Bold))
-        self.label_time.setFont(QtGui.QFont('Times',20,QtGui.QFont.Bold))
-        self.label_time.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_time.resize(167, 69)
-        self.label_time.setStyleSheet('background-color: rgb(43,21,0); color: rgb(255,184,0)')
-        self.move(0, 0)
-
 
         self.button_home = self.make_button( 'Home', size=(200, 69), location=(600, 411))
 
@@ -44,10 +38,12 @@ class DiagnosticsWindow(QtGui.QWidget):
                 style_sheet='background-color: rgba(0,0,0,0%)'
         )
 
-
-
+        self.label_brake = self.make_label('Transmission Break:',
+                                           font=QtGui.QFont('Times',14,QtGui.QFont.Bold),
+                                           size=(200, 69),
+                                           )
         self.label_brake = QtGui.QLabel('Transmission Brake: ', self)
-        self.label_brake.setFont(QtGui.QFont('Times',14,QtGui.QFont.Bold))
+        self.label_brake.setFont()
         #self.label_engineSpeed.setAlignment(QtCore.Qt.AlignCenter)
         self.label_brake.resize(200, 69)
         self.label_brake.setStyleSheet('background-color: rgba(0,0,0,0%)')

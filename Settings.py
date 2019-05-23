@@ -21,15 +21,15 @@ class SettingsWindow(QtGui.QWidget):
                       '%d:%s AM'%(int(currentTime[0]), currentTime[1]))
         self.label_time = self.make_label(time_label, (167, 69), (0 ,0), QtGui.QFont('Times', 20, QtGui.QFont.Bold))
 
-        self.button_home = self.make_button('Home', size=(200, 69), location=(600, 411))
+        self.button_home = self.make_button('Home', size=(200, 69), position=(600, 411))
 
-        self.button_menu = self.make_button('Menu', size=(200, 69), location=(0, 411))
+        self.button_menu = self.make_button('Menu', size=(200, 69), position=(0, 411))
 
         self.label_Mode = self.make_label('Mode', (200, 69), (500, 50), QtGui.QFont('Times',  40,QtGui.QFont.Bold))
 
-        self.button_modeManeuver = self.make_button('Maneuverbility Mode', size=(240, 69), location=(480, 150))
+        self.button_modeManeuver = self.make_button('Maneuverbility Mode', size=(240, 69), position=(480, 150))
 
-        self.button_modePull = self.make_button('Pulling Mode', size=(240, 69), location=(480, 250))
+        self.button_modePull = self.make_button('Pulling Mode', size=(240, 69), position=(480, 250))
 
         '''self.updateTimer = QtCore.QTimer()
         self.updateTimer.timeout.connect(self.updateDiffDial)

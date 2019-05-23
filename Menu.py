@@ -41,11 +41,11 @@ class MenuWindow(QtGui.QWidget):
         self.move(0, 0)
         # self.grid.addWidget(self.label_message, 0,4,1,3)
 
-        self.button_home = make_button(self, 'Home', size=(200, 69), location=(600, 411))
+        self.button_home = make_button(self, 'Home', size=(200, 69), position=(600, 411))
 
-        self.button_quit = make_button(self, 'Quit', size=(60, 30), location=(740, 0))
+        self.button_quit = make_button(self, 'Quit', size=(60, 30), position=(740, 0))
 
-        self.button_settings = make_button(self, 'Settings', size=(240, 69), location=(30, 120))
+        self.button_settings = make_button(self, 'Settings', size=(240, 69), position=(30, 120))
 
         '''self.button_information = QtGui.QPushButton('Info', self)
         self.button_information.setStyleSheet('background-color: rgb(43,21,0); color: rgb(255,184,0)')
@@ -53,7 +53,7 @@ class MenuWindow(QtGui.QWidget):
         self.button_information.resize(240,69)
         self.button_information.move(30, 240)'''
 
-        self.button_diagnostics = make_button(self, 'Diagnostics', size=(240, 69), location=(30, 360))
+        self.button_diagnostics = make_button(self, 'Diagnostics', size=(240, 69), position=(30, 360))
 
         '''self.updateTimer = QtCore.QTimer()
         self.updateTimer.timeout.connect(self.updateDiffDial)

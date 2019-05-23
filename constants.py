@@ -24,3 +24,10 @@ _screen = QtGui.QDesktopWidget().screenGeometry()
 class SCREEN:
     HEIGHT = _screen.height()
     WIDTH = _screen.width()
+
+
+class Gear(Enum):
+    NEUTRAL = 'N'
+    HIGH = "H"
+    LOW = "L"
+    REVERSE = "R"

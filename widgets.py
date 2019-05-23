@@ -17,29 +17,38 @@ def make_button(parent, label, font=None, size=None, position=None, style_sheet=
 
 
 def make_compass_widget(
-        back_text, point_text, size=(100, 100), angle=0, style_sheet='background-color: rgba(0,0,0,0%)'):
+        back_text, point_text, size=None, angle=None, style_sheet=None):
     compass = CW.CompassWidget()
-    compass.setAngle(angle)
-    compass.resize(*size)
+    if angle:
+        compass.setAngle(angle)
+    else:
+        compass.setAngle(45)
+    if size:
+        compass.resize(*size)
     compass._backText = back_text
     compass._pointText = point_text
-    compass.setStyleSheet(style_sheet)
+    if style_sheet:
+        compass.setStyleSheet(style_sheet)
     return compass
 
 
 def make_label(
         parent,
         text,
-        size=(100, 100),
-        position=(100, 100),
-        font=QtGui.QFont('Times', 90, QtGui.QFont.Bold),
+        size=None,
+        position=None,
+        font=None,
         alignment=QtCore.Qt.AlignCenter,
-        style_sheet='background-color: rgb(43,21,0); color: rgb(255,184,0)'
+        style_sheet=None
 ):
     label = QtGui.QLabel(text, parent)
-    label.setStyleSheet(style_sheet)
-    label.setFont(font)
+    if style_sheet:
+        label.setStyleSheet(style_sheet)
+    if font:
+        label.setFont(font)
     label.setAlignment(alignment)
-    label.resize(*size)
-    label.move(*position)
+    if size:
+        label.resize(*size)
+    if position:
+        label.move(*position)
     return label

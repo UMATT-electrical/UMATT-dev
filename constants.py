@@ -17,7 +17,6 @@ class RGBStrings(Enum):
         return "color: %s" % self.value
 
 
-
 _screen = QtGui.QDesktopWidget().screenGeometry()
 
 

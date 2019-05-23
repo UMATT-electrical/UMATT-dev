@@ -3,6 +3,7 @@ import compassWidget2 as CW
 import barWidget as BW
 import time
 import os
+import SCREEN
 
 from widgets import make_button, make_compass_widget, make_label
 
@@ -78,17 +79,20 @@ class HomeWindow(QtGui.QWidget):
         self.label_time = self.make_label(time_label, (167, 69), (0, 0), QtGui.QFont('Times', 20, QtGui.QFont.Bold))
 
 
+        main_menu_item_size = HEIGHT/4
         self.label_gear = self.make_label(
                 '',
-                size=(133, 133),
-                position=(667, 0),
+                size=(main_menu_item_size, main_menu_item_size),
+                position=(WIDTH - main_menu_item_size, 0),
                 font=QtGui.QFont('Times', 90, QtGui.QFont.Bold),
                 style_sheet='background-color: rgb(43,21,0); color: rgb(255,184,0)'
         )
 
         font = QtGui.QFont('Times', 20, QtGui.QFont.Bold)
 
-        self.button_menu = self.make_button('Menu', font=font, size=(200, 69), position=(600, 411))
+        self.button_menu = self.make_button('Menu', font=font,
+                 size=(main_menu_item_size, main_menu_item_size),
+                 position=(WIDTH-main_menu_item_size, main_menu_item_size))
         #self.grid.addWidget(self.button_menu, 8,8,1,3)
 
         self.button_difflock = self.make_button('Diff Lock', font=font, size=(200, 69), position=(600, 242))

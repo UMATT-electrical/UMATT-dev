@@ -34,4 +34,5 @@ class Gear(Enum):
     NEUTRAL = 'N'
     HIGH = "H"
     LOW = "L"
+    FORWARD = 'F'
     REVERSE = "R"

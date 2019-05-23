@@ -13,6 +13,7 @@ import Home as HomeWindow
 import Menu as MenuWindow
 import Settings as SettingsWindow
 import Diagnostics as DiagnosticsWindow
+from constants import Gear
 
 
 class MainWindow(QtGui.QMainWindow):
@@ -64,7 +65,7 @@ class MainWindow(QtGui.QMainWindow):
         self.sevcon_AltProfile = 0
         self.warning_gearlockout = [0,0]
 
-        self.currentGear = 'N'
+        self.currentGear = Gear.NEUTRAL
 
         self.initDrive()
 
@@ -134,11 +135,11 @@ class MainWindow(QtGui.QMainWindow):
                 self.value_accessoryPower = data[16]
                 
                 if self.sevcon_Forwards == 1:
-                    self.currentGear = 'F'
+                    self.currentGear = Gear.FORWARD
                 elif self.sevcon_Reverse == 1:
-                    self.currentGear = 'R'
+                    self.currentGear = Gear.REVERSE
                 else:
-                    self.currentGear = 'N'
+                    self.currentGear = Gear.NEUTRAL
 
     def gotoMenu(self):
         self.central_widget.setCurrentWidget(self.menuWindowWidget)
@@ -153,17 +154,17 @@ class MainWindow(QtGui.QMainWindow):
         self.central_widget.setCurrentWidget(self.diagnosticsWindowWidget)
 
     def setModeManeuver(self):
-        if self.currentGear == 'N':
+        if self.currentGear == Gear.NEUTRAL:
             self.Quodi.put((1,1))
 
     def setModePulling(self):
-        if self.currentGear == 'N':
+        if self.currentGear == Gear.NEUTRAL:
             self.Quodi.put((2,1))
 
     def quitProgram(self):
         QtGui.qApp.quit()
         print('TRY')
-        if self.currentGear == 'N':
+        if self.currentGear == Gear.NEUTRAL:
             if self.value_accessoryPower == 0:
                 print('PWR Down')
                 self.Quodi.put((100,1))

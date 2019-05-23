@@ -2,21 +2,20 @@ from enum import Enum
 from PyQt4 import QtGui, QtCore
 
 
-class ColourString(str):
+class RGBStrings(Enum):
+    DARK_BROWN = 'rgb(43,21,0)'
+    GOLD = 'rgb(255,184,0)'
+    TRANSPARENT = 'rgba(0,0,0,0%)'
+    WHITE = 'white'
+
     @property
     def background_string(self):
-        return "background-color: %s" % self
+        return "background-color: %s" % self.value
 
     @property
     def colour_string(self):
-        return "color: %s" % self
+        return "color: %s" % self.value
 
-
-class RGBStrings(Enum):
-    DARK_BROWN = ColourString('rgb(43,21,0)')
-    GOLD = ColourString('rgb(255,184,0)')
-    TRANSPARENT = ColourString('rgba(0,0,0,0%)')
-    WHITE = ColourString('white')
 
 
 _screen = QtGui.QDesktopWidget().screenGeometry()

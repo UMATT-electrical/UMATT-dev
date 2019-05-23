@@ -18,7 +18,9 @@ class RGBStrings(Enum):
     TRANSPARENT = ColourString('rgba(0,0,0,0%)')
 
 
-def compass_text(incr, offset=0):
-    all_vals = [idx*incr for idx in range(7)]
-    return {cnt: (all_vals+all_vals)[idx+offset] for idx, cnt in enumerate(range(0, 359, 45))}
+_screen = QtGui.QDesktopWidget().screenGeometry()
 
+
+class SCREEN:
+    HEIGHT = _screen.height()
+    WIDTH = _screen.width()

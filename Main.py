@@ -16,6 +16,7 @@ import Diagnostics as DiagnosticsWindow
 
 os.chdir(os.getcwd()+'/P19')
 
+
 class MainWindow(QtGui.QMainWindow):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
@@ -68,9 +69,7 @@ class MainWindow(QtGui.QMainWindow):
         self.currentGear = 'N'
 
         self.initDrive()
-        self.initUI()
 
-    def initUI(self):
         self.central_widget = QtGui.QStackedWidget()
         self.setCentralWidget(self.central_widget)
         
@@ -86,8 +85,6 @@ class MainWindow(QtGui.QMainWindow):
         self.diagnosticsWindowWidget = DiagnosticsWindow.DiagnosticsWindow(self)
         self.central_widget.addWidget(self.diagnosticsWindowWidget)
 
-        
-        
         self.homeWindowWidget.button_menu.clicked.connect(self.gotoMenu)
 
         self.menuWindowWidget.button_home.clicked.connect(self.gotoHome)
@@ -102,20 +99,11 @@ class MainWindow(QtGui.QMainWindow):
 
         self.diagnosticsWindowWidget.button_home.clicked.connect(self.gotoHome)
         self.diagnosticsWindowWidget.button_menu.clicked.connect(self.gotoMenu)
-        
-        #self.homeWindowWidget.btnSettings.clicked.connect(self.gotoSettings)
-        #self.homeWindowWidget.btnDiagnostics.clicked.connect(self.gotoDiagnostics)
-
-        #self.settingsWindowWidget.btnManualMode.clicked.connect(self.setModeManual)
-        #self.settingsWindowWidget.btnAutomaticMode.clicked.connect(self.setModeAutomatic)
-        #self.settingsWindowWidget.btnOffMode.clicked.connect(self.setModeOff)
-
         self.central_widget.setCurrentWidget(self.homeWindowWidget)
 
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.Update)
         self.timer.start(100)
-
 
         self.setStyleSheet("background-color: white")
         #self.setCursor(QtGui.QCursor(QtCore.Qt.BlankCursor))

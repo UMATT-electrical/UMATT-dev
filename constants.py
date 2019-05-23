@@ -16,6 +16,7 @@ class RGBStrings(Enum):
     DARK_BROWN = ColourString('rgb(43,21,0)')
     GOLD = ColourString('rgb(255,184,0)')
     TRANSPARENT = ColourString('rgba(0,0,0,0%)')
+    WHITE = ColourString('white')
 
 
 _screen = QtGui.QDesktopWidget().screenGeometry()

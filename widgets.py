@@ -49,8 +49,15 @@ def make_label(
         position=None,
         font=None,
         alignment=QtCore.Qt.AlignCenter,
-        style_sheet=None
+        style_sheet=None,
+        margin_size=None,
+        margin_colour=None
 ):
+    if margin_colour and margin_size:
+        background_label = QtGui.QLabel('', parent)
+        background_label.size(size[0]+margin_size, size[1]+margin_size)
+        background_label.setStyleSheet(margin_colour)
+        background_label.move(*position)
     label = QtGui.QLabel(text, parent)
     if style_sheet:
         label.setStyleSheet(style_sheet)

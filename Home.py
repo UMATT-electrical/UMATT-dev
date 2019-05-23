@@ -18,6 +18,7 @@ class HomeWindow(QtGui.QWidget):
         self.ScreenTimer = time.time()
         
         self.make_button = lambda *args, **kwargs: make_button(self, *args, **kwargs)
+        self.make_label = lambda *args, **kwargs: make_label(self, *args, **kwargs)
 
         self.grid = QtGui.QGridLayout(self)
 
@@ -70,9 +71,6 @@ class HomeWindow(QtGui.QWidget):
         
         self.setLayout(self.grid)
 
-        self.make_label = lambda *args, **kwargs: make_label(self, *args, **kwargs)
-        self.make_button = lambda *args, **kwargs: make_button(self, *args, **kwargs)
-
         currentTime = time.ctime().split()[3].split(':')
         time_label = ('%d:%s PM' % (int(currentTime[0]) - 12, currentTime[1]) if
                       int(currentTime[0]) > 12 else
@@ -90,10 +88,10 @@ class HomeWindow(QtGui.QWidget):
 
         font = QtGui.QFont('Times', 20, QtGui.QFont.Bold)
 
-        self.button_menu = self.make_button('Menu', font, (200, 69), (600, 411))
+        self.button_menu = self.make_button('Menu', font=font, size=(200, 69), position=(600, 411))
         #self.grid.addWidget(self.button_menu, 8,8,1,3)
 
-        self.button_difflock = self.make_button('Diff Lock', font, (200, 69), (600, 242))
+        self.button_difflock = self.make_button('Diff Lock', font=font, size=(200, 69), position=(600, 242))
 
 
         self.label_message = self.make_label(

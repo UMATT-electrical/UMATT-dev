@@ -42,7 +42,7 @@ class SettingsWindow(QtGui.QWidget):
         self.label_Mode.move(500,50)
 
 
-        self.button_menu = make_button(
+        self.button_modeManeuver = make_button(
             'Maneuverbility Mode', self, size=(240, 69), location=(480, 150))
 
         self.button_modePull = make_button(

@@ -2,7 +2,7 @@ from PyQt4 import QtGui, QtCore
 import compassWidget2 as CW
 import barWidget as BW
 import time
-from widgets import make_button
+from widgets import make_button, make_label
 import os
 
 captureTime = 1
@@ -20,6 +20,9 @@ class MenuWindow(QtGui.QWidget):
         self.image_logo.setPixmap(pixmap)
         self.image_logo.move(10,110)'''
 
+        self.make_button = lambda *args, **kwargs: make_button(self, *args, **kwargs)
+        self.make_label = lambda *args, **kwargs: make_label(self, *args, **kwargs)
+
         pixmap2 = QtGui.QPixmap("Full Tractor.PNG")
         pixmap2 = pixmap2.scaled(500, 300)
         self.image_logo2 = QtGui.QLabel(self)
@@ -33,11 +36,11 @@ class MenuWindow(QtGui.QWidget):
         self.label_time = self.make_label(time_label, (167, 69), (0, 0), QtGui.QFont('Times', 20, QtGui.QFont.Bold))
         # self.grid.addWidget(self.label_message, 0,4,1,3)
 
-        self.button_home = make_button(self, 'Home', size=(200, 69), position=(600, 411))
+        self.button_home = self.make_button('Home', size=(200, 69), position=(600, 411))
 
-        self.button_quit = make_button(self, 'Quit', size=(60, 30), position=(740, 0))
+        self.button_quit = self.make_button('Quit', size=(60, 30), position=(740, 0))
 
-        self.button_settings = make_button(self, 'Settings', size=(240, 69), position=(30, 120))
+        self.button_settings = self.make_button('Settings', size=(240, 69), position=(30, 120))
 
         '''self.button_information = QtGui.QPushButton('Info', self)
         self.button_information.setStyleSheet('background-color: rgb(43,21,0); color: rgb(255,184,0)')
@@ -45,7 +48,7 @@ class MenuWindow(QtGui.QWidget):
         self.button_information.resize(240,69)
         self.button_information.move(30, 240)'''
 
-        self.button_diagnostics = make_button(self, 'Diagnostics', size=(240, 69), position=(30, 360))
+        self.button_diagnostics = self.make_button('Diagnostics', size=(240, 69), position=(30, 360))
 
         '''self.updateTimer = QtCore.QTimer()
         self.updateTimer.timeout.connect(self.updateDiffDial)
@@ -58,54 +61,54 @@ class MenuWindow(QtGui.QWidget):
         QtGui.qApp.quit()'''
         pass
 
-    def Timer1(self):
-        # self.label2.setText('Voltage: %.2f V'%(self.parent().parent().value_battery/1023.*15.4))
-        self.label2.setText('%d.2 V' % (self.parent().parent().value_battery / 1023. * 15.4))
-        # self.label3.setText('%.2f RPM'%(self.parent().parent().value_engineSpeed/captureTime))
-        self.label3.setText('%d Hz' % (self.parent().parent().value_engineSpeed / captureTime))
-        self.label4.setText('%d Hz' % (self.parent().parent().value_wheelSpeed / captureTime / 2))
-        self.label20.setText('IVT: %3d Hz' % (self.parent().parent().value_IVTSpeed / captureTime))
-        try:
-            self.label5.setText('%4.1f C' % ((3984. / (3984. / 298 - math.log(
-                10.5 / 5.1 * (0.0001 + 1024. / self.parent().parent().value_temperature - 1))) - 273)))
-        except (ValueError, ZeroDivisionError):
-            pass
+    # def Timer1(self):
+    #     # self.label2.setText('Voltage: %.2f V'%(self.parent().parent().value_battery/1023.*15.4))
+    #     self.label2.setText('%d.2 V' % (self.parent().parent().value_battery / 1023. * 15.4))
+    #     # self.label3.setText('%.2f RPM'%(self.parent().parent().value_engineSpeed/captureTime))
+    #     self.label3.setText('%d Hz' % (self.parent().parent().value_engineSpeed / captureTime))
+    #     self.label4.setText('%d Hz' % (self.parent().parent().value_wheelSpeed / captureTime / 2))
+    #     self.label20.setText('IVT: %3d Hz' % (self.parent().parent().value_IVTSpeed / captureTime))
+    #     try:
+    #         self.label5.setText('%4.1f C' % ((3984. / (3984. / 298 - math.log(
+    #             10.5 / 5.1 * (0.0001 + 1024. / self.parent().parent().value_temperature - 1))) - 273)))
+    #     except (ValueError, ZeroDivisionError):
+    #         pass
 
-    def Timer4(self):
-
-        if self.parent().parent().output_hazardState == 1:
-            if self.parent().parent().output_hazardStatetemp == 0:
-                self.parent().parent().writeGPIO(p_peri1, 1)
-                self.parent().parent().writeGPIO(p_peri2, 1)
-                self.parent().parent().writeGPIO(p_peri3, 1)
-                self.parent().parent().output_hazardStatetemp = 1
-            else:
-                self.parent().parent().writeGPIO(p_peri1, 0)
-                self.parent().parent().writeGPIO(p_peri2, 0)
-                self.parent().parent().writeGPIO(p_peri3, 0)
-                self.parent().parent().output_hazardStatetemp = 0
-
-        else:
-
-            if self.parent().parent().output_headLightState == 1:
-                self.parent().parent().writeGPIO(p_peri1, 1)
-                self.parent().parent().writeGPIO(p_peri2, 1)
-
-            if self.parent().parent().output_headLightLState == 1:  # left
-                if self.parent().parent().output_headlightLtemp == 0:
-                    self.parent().parent().writeGPIO(p_peri2, 1)
-                    self.parent().parent().output_headlightLtemp = 1
-                else:
-                    self.parent().parent().writeGPIO(p_peri2, 0)
-                    self.parent().parent().output_headlightLtemp = 0
-
-            if self.parent().parent().output_headLightRState == 1:  # right
-                if self.parent().parent().output_headlightRtemp == 0:
-                    self.parent().parent().writeGPIO(p_peri1, 1)
-                    self.parent().parent().output_headlightRtemp = 1
-                else:
-                    self.parent().parent().writeGPIO(p_peri1, 0)
-                    self.parent().parent().output_headlightRtemp = 0
+    # def Timer4(self):
+    #
+    #     if self.parent().parent().output_hazardState == 1:
+    #         if self.parent().parent().output_hazardStatetemp == 0:
+    #             self.parent().parent().writeGPIO(p_peri1, 1)
+    #             self.parent().parent().writeGPIO(p_peri2, 1)
+    #             self.parent().parent().writeGPIO(p_peri3, 1)
+    #             self.parent().parent().output_hazardStatetemp = 1
+    #         else:
+    #             self.parent().parent().writeGPIO(p_peri1, 0)
+    #             self.parent().parent().writeGPIO(p_peri2, 0)
+    #             self.parent().parent().writeGPIO(p_peri3, 0)
+    #             self.parent().parent().output_hazardStatetemp = 0
+    #
+    #     else:
+    #
+    #         if self.parent().parent().output_headLightState == 1:
+    #             self.parent().parent().writeGPIO(p_peri1, 1)
+    #             self.parent().parent().writeGPIO(p_peri2, 1)
+    #
+    #         if self.parent().parent().output_headLightLState == 1:  # left
+    #             if self.parent().parent().output_headlightLtemp == 0:
+    #                 self.parent().parent().writeGPIO(p_peri2, 1)
+    #                 self.parent().parent().output_headlightLtemp = 1
+    #             else:
+    #                 self.parent().parent().writeGPIO(p_peri2, 0)
+    #                 self.parent().parent().output_headlightLtemp = 0
+    #
+    #         if self.parent().parent().output_headLightRState == 1:  # right
+    #             if self.parent().parent().output_headlightRtemp == 0:
+    #                 self.parent().parent().writeGPIO(p_peri1, 1)
+    #                 self.parent().parent().output_headlightRtemp = 1
+    #             else:
+    #                 self.parent().parent().writeGPIO(p_peri1, 0)
+    #                 self.parent().parent().output_headlightRtemp = 0
 
     def pressed_menu(self):
         self.parent().parent().value_diffSpeed += 4

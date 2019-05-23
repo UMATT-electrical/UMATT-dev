@@ -142,7 +142,7 @@ class HomeWindow(QtGui.QWidget):
 
     def update(self):
         self.updateDiffDial()
-        self.label_diffSpeed.setText('%.2f MPH'% self.parent().parent().value_diffSpeed)
+        self.label_diffspeed.setText('%.2f MPH'% self.parent().parent().value_diffSpeed)
         
         self.label_gear.setText(self.parent().parent().currentGear)
         '''

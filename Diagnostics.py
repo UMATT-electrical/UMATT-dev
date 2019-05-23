@@ -33,13 +33,13 @@ class DiagnosticsWindow(QtGui.QWidget):
 
 
         self.button_home = make_button(
-            'Home', self, size=(200, 69), location=(600, 411))
+            self, 'Home', size=(200, 69), location=(600, 411))
 
         self.button_menu = make_button(
-            'Menu', self, size=(200, 69), location=(0, 411))
+            self, 'Menu', size=(200, 69), location=(0, 411))
 
         self.button_modeManeuver = make_button(
-            'Maneuverbility Mode', self, size=(240, 69), location=(480, 150))
+             self, 'Maneuverbility Mode', size=(240, 69), location=(480, 150))
 
         self.label_throttle = make_label(
                 self,

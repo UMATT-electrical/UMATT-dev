@@ -4,7 +4,6 @@ import barWidget as BW
 import time
 import os
 
-from constants import WIDTH, HEIGHT
 from widgets import make_button, make_compass_widget, make_label
 
 captureTime = 1
@@ -13,7 +12,7 @@ captureTime = 1
 class HomeWindow(QtGui.QWidget):
 
     def __init__(self, parent=None):
-        from constants import SCREEN
+        from constants import SCREEN, HEIGHT, WIDTH
         # initialize basic window function
         super(HomeWindow, self).__init__()
 

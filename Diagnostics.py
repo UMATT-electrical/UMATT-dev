@@ -26,12 +26,12 @@ class DiagnosticsWindow(QtGui.QWidget):
                       '%d:%s AM' % (int(currentTime[0]), currentTime[1]))
         self.label_time = self.make_label(time_label, (167, 69), (0, 0), QtGui.QFont('Times', 20, QtGui.QFont.Bold))
 
-        self.button_home = self.make_button('Home', size=(200, 69), location=(600, 411))
+        self.button_home = self.make_button('Home', size=(200, 69), position=(600, 411))
 
-        self.button_menu = self.make_button('Menu', size=(200, 69), location=(0, 411))
+        self.button_menu = self.make_button('Menu', size=(200, 69), position=(0, 411))
 
         self.button_modeManeuver = self.make_button(
-            'Maneuverbility Mode', size=(240, 69), location=(480, 150))
+            'Maneuverbility Mode', size=(240, 69), position=(480, 150))
 
         self.label_throttle = self.make_label(
             'Throttle: ',
@@ -45,7 +45,7 @@ class DiagnosticsWindow(QtGui.QWidget):
             'Transmission Break:',
             font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             size=(200, 69),
-            location=(10, 110),
+            position=(10, 110),
             style_sheet='background-color: rgba(0,0,0,0%)'
         )
 
@@ -53,7 +53,7 @@ class DiagnosticsWindow(QtGui.QWidget):
             'Clutch: ',
             font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             size=(200, 69),
-            location=(10, 140),
+            position=(10, 140),
             style_sheet='background-color: rgba(0,0,0,0%)'
         )
 

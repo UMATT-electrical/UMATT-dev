@@ -4,7 +4,7 @@ import barWidget as BW
 import time
 import os
 
-from widgets import make_button, make_compass_widget
+from widgets import make_button, make_compass_widget, make_label
 
 captureTime = 1
 
@@ -17,10 +17,6 @@ class HomeWindow(QtGui.QWidget):
         self.ScreenTimer = time.time()
         
         self.make_button = lambda *args, **kwargs: make_button(self, *args, **kwargs)
-        self.initUI()
-
-
-    def initUI(self):
 
         self.grid = QtGui.QGridLayout(self)
 
@@ -73,13 +69,23 @@ class HomeWindow(QtGui.QWidget):
         
         self.setLayout(self.grid)
 
-        self.label_gear = QtGui.QLabel('', self)
-        self.label_gear.setStyleSheet('background-color: rgb(43,21,0); color: rgb(255,184,0)')
-        self.label_gear.setFont(QtGui.QFont('Times',90,QtGui.QFont.Bold))
-        self.label_gear.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_gear.resize(133,133)
-        self.label_gear.move(667,0)
-        #self.grid.addWidget(self.label_gear, 0,9,3,2)
+        self.make_label = lambda *args, **kwargs: make_label(self, *args, **kwargs)
+        self.make_button = lambda *args, **kwargs: make_button(self, *args, **kwargs)
+
+        currentTime = time.ctime().split()[3].split(':')
+        time_label = ('%d:%s PM' % (int(currentTime[0]) - 12, currentTime[1]) if
+                      int(currentTime[0]) > 12 else
+                      '%d:%s AM' % (int(currentTime[0]), currentTime[1]))
+        self.label_time = self.make_label(time_label, (167, 69), (0, 0), QtGui.QFont('Times', 20, QtGui.QFont.Bold))
+
+
+        self.label_gear = self.make_label(
+                '',
+                size=(133, 133),
+                position=(667, 0),
+                font=QtGui.QFont('Times', 90, QtGui.QFont.Bold),
+                style_sheet='background-color: rgb(43,21,0); color: rgb(255,184,0)'
+        )
 
         font = QtGui.QFont('Times', 20, QtGui.QFont.Bold)
 
@@ -89,54 +95,47 @@ class HomeWindow(QtGui.QWidget):
         self.button_difflock = self.make_button('Diff Lock', font, (200, 69), (600, 242))
 
 
-        self.label_message = QtGui.QLabel('Engine Not On', self)
-        self.label_message.setFont(QtGui.QFont('Times',14,QtGui.QFont.Bold))
-        self.label_message.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_message.resize(333, 69)
-        self.label_message.move(233, 0)
-        #self.grid.addWidget(self.label_message, 0,4,1,3)
+        self.label_message = self.make_label(
+                'Engine Not On',
+                size=(333, 69),
+                position=(233, 0),
+                font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+        )
 
-        self.label_mode = QtGui.QLabel('', self)
-        self.label_mode.setFont(QtGui.QFont('Times',14,QtGui.QFont.Bold))
-        self.label_mode.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_mode.resize(267, 69)
-        self.label_mode.move(267, 411)
-        #self.grid.addWidget(self.label_mode, 8,5,1,1)      
+        self.label_mode = self.make_label(
+                '',
+                size=(267, 69),
+                position=(267, 411),
+                font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+        )
 
-        currentTime = time.ctime().split()[3].split(':')
-        if int(currentTime[0])>12:
-            self.label_time = QtGui.QLabel('%d:%s PM'%(int(currentTime[0])-12,currentTime[1]), self)
-        else:
-            self.label_time = QtGui.QLabel('%d:%s AM'%(int(currentTime[0]),currentTime[1]), self)
-
-        self.label_time.setStyleSheet('background-color: rgb(43,21,0); color: rgb(255,184,0)')
-        self.label_time.setFont(QtGui.QFont('Times',20,QtGui.QFont.Bold))
-        self.label_time.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_time.resize(167, 69)
-        #self.label_time.setStyleSheet('background-color: rgba(0,0,0,0%)')
         self.move(0,0)
         #self.grid.addWidget(self.label_message, 0,4,1,3)
 
-        self.label_diffSpeed = QtGui.QLabel('0 MPH', self)
-        self.label_diffSpeed.setFont(QtGui.QFont('Times',14))#,QtGui.QFont.Bold))
-        self.label_diffSpeed.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_diffSpeed.resize(100, 69)    
-        self.label_diffSpeed.setStyleSheet('background-color: rgba(0,0,0,0%)')
-        self.label_diffSpeed.move(360, 330)
 
-        self.label_engineSpeed = QtGui.QLabel('0 RPM', self)
-        self.label_engineSpeed.setFont(QtGui.QFont('Times',14))#,QtGui.QFont.Bold))
-        self.label_engineSpeed.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_engineSpeed.resize(100, 69)
-        self.label_engineSpeed.setStyleSheet('background-color: rgba(0,0,0,0%)')
-        self.label_engineSpeed.move(85, 185)
+        self.label_diffspeed = self.make_label(
+                '',
+                size=(100, 69),
+                position=(360, 330),
+                font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+                style_sheet='background-color: rgba(0,0,0,0%)'
+        )
 
-        self.label_motorSpeed = QtGui.QLabel('0 RPM', self)
-        self.label_motorSpeed.setFont(QtGui.QFont('Times',14))#,QtGui.QFont.Bold))
-        self.label_motorSpeed.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_motorSpeed.resize(100, 69)
-        self.label_motorSpeed.setStyleSheet('background-color: rgba(0,0,0,0%)')
-        self.label_motorSpeed.move(85, 400)
+        self.label_engineSpeed = self.make_label(
+                '0 RPM',
+                size=(100, 69),
+                position=(85, 185),
+                font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+                style_sheet='background-color: rgba(0,0,0,0%)'
+        )
+
+        self.label_motorSpeed = self.make_label(
+                '0 RPM',
+                size=(100, 69),
+                position=(85, 400),
+                font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+                style_sheet='background-color: rgba(0,0,0,0%)'
+        )
 
         self.updateTimer = QtCore.QTimer()
         self.updateTimer.timeout.connect(self.update)

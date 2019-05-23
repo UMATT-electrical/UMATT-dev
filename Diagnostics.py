@@ -3,6 +3,8 @@ import compassWidget2 as CW
 import barWidget as BW
 import time
 import os
+from widgets import make_button
+from widgets import make_label
 
 captureTime = 1
 
@@ -28,24 +30,27 @@ class DiagnosticsWindow(QtGui.QWidget):
         self.label_time.setStyleSheet('background-color: rgb(43,21,0); color: rgb(255,184,0)')
         self.move(0,0)
 
-        self.button_home = QtGui.QPushButton('Home', self)
-        self.button_home.setStyleSheet('background-color: rgb(43,21,0); color: rgb(255,184,0)')
-        self.button_home.setFont((QtGui.QFont('Times',20,QtGui.QFont.Bold)))
-        self.button_home.resize(200,69)
-        self.button_home.move(600, 411)
 
-        self.button_menu = QtGui.QPushButton('Menu', self)
-        self.button_menu.setStyleSheet('background-color: rgb(43,21,0); color: rgb(255,184,0)')
-        self.button_menu.setFont((QtGui.QFont('Times',20,QtGui.QFont.Bold)))
-        self.button_menu.resize(200,69)
-        self.button_menu.move(0, 411)
 
-        self.label_throttle = QtGui.QLabel('Throttle: ', self)
-        self.label_throttle.setFont(QtGui.QFont('Times',14,QtGui.QFont.Bold))
-        #self.label_engineSpeed.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_throttle.resize(200, 69)
-        self.label_throttle.setStyleSheet('background-color: rgba(0,0,0,0%)')
-        self.label_throttle.move(10, 80)
+        self.button_home = make_button(
+            'Home', self, size=(200, 69), location=(600, 411))
+
+        self.button_menu = make_button(
+            'Menu', self, size=(200, 69), location=(0, 411))
+
+        self.button_modeManeuver = make_button(
+            'Maneuverbility Mode', self, size=(240, 69), location=(480, 150))
+
+        self.label_throttle = make_label(
+                self,
+                'Throttle: ',
+                size=(200, 69),
+                position=(10, 80),
+                font=QtGui.QFont('Times', 90, QtGui.QFont.Bold),
+                style_sheet='background-color: rgba(0,0,0,0%)'
+        )
+
+
 
         self.label_brake = QtGui.QLabel('Transmission Brake: ', self)
         self.label_brake.setFont(QtGui.QFont('Times',14,QtGui.QFont.Bold))

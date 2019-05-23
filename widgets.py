@@ -2,12 +2,14 @@ from PyQt4 import QtGui, QtCore
 import compassWidget2 as CW
 
 
-def make_pixmap():
-    pixmap = QtGui.QPixmap("UMATT_LOGO_BROWN.jpg")
-    pixmap = pixmap.scaled(200, 200)
-    self.image_logo = QtGui.QLabel(self)
-    self.image_logo.setPixmap(pixmap)
-    # self.image_logo.move(567,167)
+def make_pixmap(parent, relative_file, size, position=None):
+    pixmap = QtGui.QPixmap(relative_file)
+    pixmap = pixmap.scaled(*size)
+    image_logo = QtGui.QLabel(parent)
+    image_logo.setPixmap(pixmap)
+    if position:
+        image_logo.move(*position)
+    return image_logo
 
 
 def make_button(parent, label, font=None, size=None, position=None, style_sheet=None):

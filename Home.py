@@ -12,7 +12,7 @@ captureTime = 1
 class HomeWindow(QtGui.QWidget):
 
     def __init__(self, parent=None):
-        from constants import SCREEN, HEIGHT, WIDTH
+        from constants import SCREEN, HEIGHT, WIDTH, RGBStrings
         # initialize basic window function
         super(HomeWindow, self).__init__()
 
@@ -84,31 +84,34 @@ class HomeWindow(QtGui.QWidget):
             size=(main_menu_item_size, main_menu_item_size),
             position=(WIDTH - main_menu_item_size, 0),
             font=QtGui.QFont('Times', 90, QtGui.QFont.Bold),
-            style_sheet='background-color: rgb(43,21,0); color: rgb(255,184,0)'
+            style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
 
         self.button_difflock = self.make_button(
             'Diff Lock',
             size=(main_menu_item_size, main_menu_item_size),
-            position=(WIDTH - main_menu_item_size, 0),
+            position=(WIDTH - main_menu_item_size, main_menu_item_size),
             font=QtGui.QFont('Times', 90, QtGui.QFont.Bold),
-            style_sheet='background-color: rgb(43,21,0); color: rgb(255,184,0)')
+            style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
+        )
 
         font = QtGui.QFont('Times', 20, QtGui.QFont.Bold)
 
         self.label_mode = self.make_label(
             '',
             size=(main_menu_item_size, main_menu_item_size),
-            position=(WIDTH - main_menu_item_size, 0),
+            position=(WIDTH - main_menu_item_size, 2*main_menu_item_size),
             font=QtGui.QFont('Times', 90, QtGui.QFont.Bold),
-            style_sheet='background-color: rgb(43,21,0); color: rgb(255,184,0)')
+            style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
+        )
 
         self.button_menu = self.make_button(
             'Menu',
             size=(main_menu_item_size, main_menu_item_size),
-            position=(WIDTH - main_menu_item_size, 0),
+            position=(WIDTH - main_menu_item_size, 3*main_menu_item_size),
             font=QtGui.QFont('Times', 90, QtGui.QFont.Bold),
-            style_sheet='background-color: rgb(43,21,0); color: rgb(255,184,0)')
+            style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
+        )
 
         self.label_message = self.make_label(
             'Engine Not On',

@@ -8,6 +8,7 @@ from widgets import make_button, make_compass_widget
 
 captureTime = 1
 
+
 class HomeWindow(QtGui.QWidget):
     
     def __init__(self, parent = None):

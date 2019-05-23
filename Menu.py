@@ -14,9 +14,6 @@ class MenuWindow(QtGui.QWidget):
         # initialize basic window function
         super(MenuWindow, self).__init__()
 
-        self.initUI()
-
-    def initUI(self):
         '''pixmap = QtGui.QPixmap("UMATT_LOGO_BROWN.jpg")
         pixmap = pixmap.scaled(260,260)
         self.image_logo = QtGui.QLabel(self)
@@ -30,15 +27,10 @@ class MenuWindow(QtGui.QWidget):
         self.image_logo2.move(300, 90)
 
         currentTime = time.ctime().split()[3].split(':')
-        if int(currentTime[0]) > 12:
-            self.label_time = QtGui.QLabel('%d:%s PM' % (int(currentTime[0]) - 12, currentTime[1]), self)
-        else:
-            self.label_time = QtGui.QLabel('%d:%s AM' % (int(currentTime[0]), currentTime[1]), self)
-        self.label_time.setFont(QtGui.QFont('Times', 20, QtGui.QFont.Bold))
-        self.label_time.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_time.resize(167, 69)
-        self.label_time.setStyleSheet('background-color: rgb(43,21,0); color: rgb(255,184,0)')
-        self.move(0, 0)
+        time_label = ('%d:%s PM' % (int(currentTime[0]) - 12, currentTime[1]) if
+                      int(currentTime[0]) > 12 else
+                      '%d:%s AM' % (int(currentTime[0]), currentTime[1]))
+        self.label_time = self.make_label(time_label, (167, 69), (0, 0), QtGui.QFont('Times', 20, QtGui.QFont.Bold))
         # self.grid.addWidget(self.label_message, 0,4,1,3)
 
         self.button_home = make_button(self, 'Home', size=(200, 69), position=(600, 411))

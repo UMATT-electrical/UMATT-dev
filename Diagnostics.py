@@ -8,6 +8,7 @@ from widgets import make_label
 
 captureTime = 1
 
+
 class DiagnosticsWindow(QtGui.QWidget):
     
     def __init__(self, parent = None):

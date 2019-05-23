@@ -14,9 +14,7 @@ class SettingsWindow(QtGui.QWidget):
 
         self.make_label = lambda *args, **kwargs: make_label(self, *args, **kwargs)
         self.make_button = lambda *args, **kwargs: make_button(self, *args, **kwargs)
-        self.initUI()
 
-    def initUI(self):
         currentTime = time.ctime().split()[3].split(':')
         time_label = ('%d:%s PM'%(int(currentTime[0])-12, currentTime[1]) if
                       int(currentTime[0]) > 12 else

@@ -14,39 +14,33 @@ class DiagnosticsWindow(QtGui.QWidget):
         # initialize basic window function
         super(DiagnosticsWindow, self).__init__()
 
-        self.initUI()
-
-
-    def initUI(self):
+        self.make_label = lambda *args, **kwargs: make_label(self, *args, **kwargs)
+        self.make_button = lambda *args, **kwargs: make_button(self, *args, **kwargs)
 
         currentTime = time.ctime().split()[3].split(':')
-        if int(currentTime[0])>12:
-            self.label_time = QtGui.QLabel('%d:%s PM'%(int(currentTime[0])-12,currentTime[1]), self)
-        else:
-            self.label_time = QtGui.QLabel('%d:%s AM'%(int(currentTime[0]),currentTime[1]), self)
+        time_label = ('%d:%s PM' % (int(currentTime[0]) - 12, currentTime[1]) if
+                      int(currentTime[0]) > 12 else
+                      '%d:%s AM' % (int(currentTime[0]), currentTime[1]))
+        self.label_time = self.make_label(time_label, (167, 69), (0, 0), QtGui.QFont('Times', 20, QtGui.QFont.Bold))
         self.label_time.setFont(QtGui.QFont('Times',20,QtGui.QFont.Bold))
         self.label_time.setAlignment(QtCore.Qt.AlignCenter)
         self.label_time.resize(167, 69)
         self.label_time.setStyleSheet('background-color: rgb(43,21,0); color: rgb(255,184,0)')
-        self.move(0,0)
+        self.move(0, 0)
 
 
+        self.button_home = self.make_button( 'Home', size=(200, 69), location=(600, 411))
 
-        self.button_home = make_button(
-            self, 'Home', size=(200, 69), location=(600, 411))
+        self.button_menu = self.make_button('Menu', size=(200, 69), location=(0, 411))
 
-        self.button_menu = make_button(
-            self, 'Menu', size=(200, 69), location=(0, 411))
+        self.button_modeManeuver = self.make_button(
+            'Maneuverbility Mode', size=(240, 69), location=(480, 150))
 
-        self.button_modeManeuver = make_button(
-             self, 'Maneuverbility Mode', size=(240, 69), location=(480, 150))
-
-        self.label_throttle = make_label(
-                self,
+        self.label_throttle = self.make_label(
                 'Throttle: ',
                 size=(200, 69),
                 position=(10, 80),
-                font=QtGui.QFont('Times', 90, QtGui.QFont.Bold),
+                font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
                 style_sheet='background-color: rgba(0,0,0,0%)'
         )
 

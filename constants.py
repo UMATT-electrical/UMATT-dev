@@ -26,6 +26,10 @@ class SCREEN:
     WIDTH = _screen.width()
 
 
+HEIGHT = SCREEN.HEIGHT
+WIDTH = SCREEN.WIDTH
+
+
 class Gear(Enum):
     NEUTRAL = 'N'
     HIGH = "H"

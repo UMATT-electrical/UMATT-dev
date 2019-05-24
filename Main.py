@@ -187,18 +187,23 @@ class MainWindow(QtGui.QMainWindow):
         proc.start()
 
     def set_mode(self, button):
-        from constants import Mode
-        items = [item for item in list(Mode.__dict__.keys()) if item.isupper()]
-        self.mode += 1
-        self.mode %= 3
-        button.setText(Mode.__getattribute__(Mode, items[self.mode]).value)
-
+        if self.currentGear == Gear.NEUTRAL:
+            from constants import Mode
+            items = [item for item in list(Mode.__dict__.keys()) if item.isupper()]
+            self.mode += 1
+            self.mode %= 3
+            # TODO: actually update the stuff now
+            if Mode.__getattribute__(Mode, items[self.mode]) == Mode.MANEUVER:
+                self.Quodi.put((1, 1))
+                button.setText(Mode.__getattribute__(Mode, items[self.mode]).value)
+            if Mode.__getattribute__(Mode, items[self.mode]) == Mode.PULL:
+                self.Quodi.put((2, 1))
+                button.setText(Mode.__getattribute__(Mode, items[self.mode]).value)
+            if Mode.__getattribute__(Mode, items[self.mode]) == Mode.AUTO:
+                print('Auto Mode Doesnt Exist Yet. Yell at Owen lol.')
     @staticmethod
     def button_wrapper(button, func):
         return lambda: func(button)
-
-
-
 
 
 def binaryToDecimal(message):

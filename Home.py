@@ -179,6 +179,30 @@ class HomeWindow(QtGui.QWidget):
             margin_width=HEIGHT/60
         )
 
+        self.voltage_label = make_label_with_image_background(
+            self,
+            left_label_size,
+            left_label_positions[2],
+            'voltage.png',
+            '00.0 Volts',
+            RGBStrings.DARK_BROWN.background_string,
+            left_label_font,
+            RGBStrings.TRANSPARENT.background_string,
+            margin_width=HEIGHT/60
+        )
+
+        self.rpm_label = make_label_with_image_background(
+            self,
+            left_label_size,
+            left_label_positions[3],
+            'rpm.png',
+            '0000 RPM',
+            RGBStrings.DARK_BROWN.background_string,
+            left_label_font,
+            RGBStrings.TRANSPARENT.background_string,
+            margin_width=HEIGHT/60
+        )
+
         # self.label_message = self.make_label(
         #     'Engine Not On',
         #     size=(333, 69),

@@ -95,7 +95,6 @@ class HomeWindow(QtGui.QWidget):
         pixmap.scaledToWidth(main_menu_item_size)
         pixmap.scaledToHeight(main_menu_item_size)
         self.button_difflock = self.make_button(
-            '',
             size=(main_menu_item_size, main_menu_item_size),
             position=(WIDTH - main_menu_item_size - HEIGHT/160, main_menu_item_size + HEIGHT/80 + HEIGHT/160),
             font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),

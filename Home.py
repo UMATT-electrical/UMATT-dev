@@ -145,8 +145,8 @@ class HomeWindow(QtGui.QWidget):
         )
 
         left_label_font = QtGui.QFont('Times', 30, QtGui.QFont.Bold)
-        total_height = HEIGHT/7
-        box_height = int(HEIGHT / 7 *.95)
+        total_height = HEIGHT/6
+        box_height = int(HEIGHT / 6 *.95)
         spacing = total_height - box_height
         left_label_size = (WIDTH / 4 - 10, box_height)
         left_label_positions = [

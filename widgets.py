@@ -99,4 +99,4 @@ class LabelWithImage:
         self.background = background_label
         self.text_background = text_background
         self.image = image
-        self.text = text
+        self.text = text_label

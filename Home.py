@@ -82,10 +82,18 @@ class HomeWindow(QtGui.QWidget):
 
         self.label_title = self.make_label(
             'UMATT P19',
-            size=(WIDTH, main_menu_item_size),
-            position=(0, 0),
-            font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
+            size=(WIDTH - 4 * main_menu_item_size, main_menu_item_size),
+            position=(2 * main_menu_item_size, main_menu_item_size + HEIGHT/80),
+            font=QtGui.QFont('Times', 50, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.TRANSPARENT.background_string, RGBStrings.BLACK.colour_string)
+        )
+
+        self.label_speed = self.make_label(
+            '100 Fucking Fast',
+            size=(WIDTH - 4 * main_menu_item_size, main_menu_item_size),
+            position=(2 * main_menu_item_size, 0),
+            font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
+            style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
         )
 
         self.label_gear = self.make_label(
@@ -123,39 +131,39 @@ class HomeWindow(QtGui.QWidget):
         )
 
 
-        self.label_message = self.make_label(
-            'Engine Not On',
-            size=(333, 69),
-            position=(233, 0),
-            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
-        )
-
-        self.move(0, 0)
-        # self.grid.addWidget(self.label_message, 0,4,1,3)
-
-        self.label_diffspeed = self.make_label(
-            '',
-            size=(100, 69),
-            position=(360, 330),
-            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
-            style_sheet='background-color: rgba(0,0,0,0%)'
-        )
-
-        self.label_engineSpeed = self.make_label(
-            '0 RPM',
-            size=(100, 69),
-            position=(85, 185),
-            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
-            style_sheet='background-color: rgba(0,0,0,0%)'
-        )
-
-        self.label_motorSpeed = self.make_label(
-            '0 RPM',
-            size=(100, 69),
-            position=(85, 400),
-            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
-            style_sheet='background-color: rgba(0,0,0,0%)'
-        )
+        # self.label_message = self.make_label(
+        #     'Engine Not On',
+        #     size=(333, 69),
+        #     position=(233, 0),
+        #     font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+        # )
+        #
+        # self.move(0, 0)
+        # # self.grid.addWidget(self.label_message, 0,4,1,3)
+        #
+        # self.label_diffspeed = self.make_label(
+        #     '',
+        #     size=(100, 69),
+        #     position=(360, 330),
+        #     font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+        #     style_sheet='background-color: rgba(0,0,0,0%)'
+        # )
+        #
+        # self.label_engineSpeed = self.make_label(
+        #     '0 RPM',
+        #     size=(100, 69),
+        #     position=(85, 185),
+        #     font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+        #     style_sheet='background-color: rgba(0,0,0,0%)'
+        # )
+        #
+        # self.label_motorSpeed = self.make_label(
+        #     '0 RPM',
+        #     size=(100, 69),
+        #     position=(85, 400),
+        #     font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+        #     style_sheet='background-color: rgba(0,0,0,0%)'
+        # )
 
         self.updateTimer = QtCore.QTimer()
         self.updateTimer.timeout.connect(self.update)

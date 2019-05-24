@@ -4,7 +4,7 @@ import barWidget as BW
 import time
 import os
 
-from widgets import make_button, make_compass_widget, make_label, LabelWithImage
+from widgets import make_button, make_compass_widget, make_label, LabelWithImage, make_pixmap
 
 captureTime = 1
 
@@ -223,13 +223,8 @@ class HomeWindow(QtGui.QWidget):
             style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
         )
 
-        self.label_logo = self.make_label(
-            'wheat umatt',
-            size=(main_menu_item_size, main_menu_item_size),
-            position=(get_center_position(main_menu_item_size), 3*(main_menu_item_size + HEIGHT/80)  + HEIGHT/160),
-            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
-            style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
-        )
+        self.label_logo = make_pixmap(self, 'wheat.png', size=(main_menu_item_size, main_menu_item_size),
+            position=(get_center_position(main_menu_item_size), 3*(main_menu_item_size + HEIGHT/80)  + HEIGHT/160))
 
         # self.label_message = self.make_label(
         #     'Engine Not On',

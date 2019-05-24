@@ -212,7 +212,7 @@ class HomeWindow(QtGui.QWidget):
         self.clock_label = LabelWithImage(
             self,
             left_label_size,
-            left_label_positions[4],
+            left_label_positions[5],
             'clock.png',
             time_label,
             RGBStrings.DARK_BROWN.background_string,

@@ -193,7 +193,7 @@ class HomeWindow(QtGui.QWidget):
 
         self.rpm_label = make_label_with_image_background(
             self,
-            left_label_size,
+            (WIDTH/5-10, HEIGHT/7-10),
             left_label_positions[3],
             'rpm.png',
             '0000 RPM',

@@ -1,3 +1,5 @@
+import math
+
 from PyQt4 import QtGui, QtCore
 import compassWidget2 as CW
 import barWidget as BW
@@ -85,7 +87,7 @@ class HomeWindow(QtGui.QWidget):
             '',
             size=(main_menu_item_size, main_menu_item_size),
             position=(WIDTH - main_menu_item_size - HEIGHT/160, HEIGHT/160),
-            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+            font=QtGui.QFont('Times', 70, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
 
@@ -93,7 +95,7 @@ class HomeWindow(QtGui.QWidget):
             'Diff Lock',
             size=(main_menu_item_size, main_menu_item_size),
             position=(WIDTH - main_menu_item_size - HEIGHT/160, main_menu_item_size + HEIGHT/80 + HEIGHT/160),
-            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+            font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
 
@@ -101,7 +103,7 @@ class HomeWindow(QtGui.QWidget):
             'mode: Pull',
             size=(main_menu_item_size, main_menu_item_size),
             position=(WIDTH - main_menu_item_size - HEIGHT/160, 2*(main_menu_item_size + HEIGHT/80) + HEIGHT/160),
-            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+            font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
 
@@ -109,7 +111,7 @@ class HomeWindow(QtGui.QWidget):
             'Menu',
             size=(main_menu_item_size, main_menu_item_size),
             position=(WIDTH - main_menu_item_size - HEIGHT/160, 3*(main_menu_item_size + HEIGHT/80)  + HEIGHT/160),
-            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+            font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
 
@@ -237,29 +239,28 @@ class HomeWindow(QtGui.QWidget):
 
     def update(self):
         # self.updateDiffDial()
-        self.label_diffspeed.setText('%.2f MPH' % self.parent().parent().value_diffSpeed)
 
-        self.label_gear.setText(self.parent().parent().currentGear)
-        '''
         currentTime = time.ctime().split()[3].split(':')
-        if int(currentTime[0])>12:
-            self.label_time.setText('%d:%s PM'%(int(currentTime[0])-12,currentTime[1]))
-        else:
-            self.label_time.setText('%d:%s AM'%(int(currentTime[0]),currentTime[1]))'''
+        time_label = ('%d:%s PM' % (int(currentTime[0]) - 12, currentTime[1]) if
+                      int(currentTime[0]) > 12 else
+                      '%d:%s AM' % (int(currentTime[0]), currentTime[1]))
 
-        if self.parent().parent().value_modeManeuverability == 1:
-            self.label_mode.setText('Mode: Maneuverability')
-        elif self.parent().parent().value_modePull == 1:
-            self.label_mode.setText('Mode: Pulling')
-        else:
-            self.label_mode.setText('Error: Unknown Mode')
+        self.diff_rpm_label.text.setText('%.2f MPH' % self.parent().parent().value_diffSpeed)
+
+        self.clock_label.text.setText(time_label)
+        runtime = self.parent().parent().runtime
+        runtime_hours = math.floor(runtime/60)
+        runtime_minutes = runtime % 60
+        self.time_label.text.setText("%s:%s hours" % (runtime_hours, runtime_minutes))
+
+        self.label_gear.setText(self.parent().parent().currentGear.value)
 
         if self.parent().parent().warning_gearlockout[0] == 1:
-            self.label_message.setText('Return Joystick to Neutral')
+            self.label_title.setText('Return Joystick to Neutral')
         elif self.parent().parent().warning_gearlockout[1] == 1:
-            self.label_message.setText('Return Joystick to Neutral')
+            self.label_title.setText('Return Joystick to Neutral')
         else:
-            self.label_message.setText('UMATT Pullers')
+            self.label_title.setText('UMATT 2019')
 
     def diffLockToggle(self):
         self.ScreenTimer = time.time()

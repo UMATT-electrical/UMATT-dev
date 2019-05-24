@@ -104,6 +104,7 @@ class MainWindow(QtGui.QMainWindow):
         self.settingsWindowWidget.button_home.clicked.connect(self.gotoHome)
         self.settingsWindowWidget.button_modeManeuver.clicked.connect(self.setModeManeuver)
         self.settingsWindowWidget.button_modePull.clicked.connect(self.setModePulling)
+        self.homeWindowWidget.button_mode.clicked.connect(self.button_wrapper(self.homeWindowWidget.button_mode, self.set_mode))
 
         self.diagnosticsWindowWidget.button_home.clicked.connect(self.gotoHome)
         self.diagnosticsWindowWidget.button_menu.clicked.connect(self.gotoMenu)
@@ -183,6 +184,20 @@ class MainWindow(QtGui.QMainWindow):
         self.Quodi = Queue()
         proc = Process(target=Drive.run, args=(self.Quodi, self.Quido))
         proc.start()
+
+    def set_mode(self, button):
+        from constants import Mode
+        from Home import mode
+        mode += 1
+        mode %= 3
+        button.setText("value")
+
+    @staticmethod
+    def button_wrapper(button, func):
+        return lambda: func(button)
+
+
+
 
 
 def binaryToDecimal(message):

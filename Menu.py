@@ -45,8 +45,8 @@ class MenuWindow(QtGui.QWidget):
 
         main_menu_item_size = (HEIGHT / 4 * 19) / 20
 
-        relative_width = 26*width / 30
-        box_margin = width / 30;
+        relative_width = 26*WIDTH / 30
+        box_margin = WIDTH / 30;
 
         self.label_title = self.make_label(
             'MENU',

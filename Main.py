@@ -209,7 +209,7 @@ class MainWindow(QtGui.QMainWindow):
             self.diff_lock = not self.diff_lock
             # TODO: actually update the stuff now
             self.Quodi.put((3, int(self.diff_lock)))
-            button.setStyleSheet(RGBStrings.GOLD.background_string if self.diff_lock else RGBStrings.DARK_BROWN.background_string)
+            button.setStyleSheet("%s; %s" % (RGBStrings.GOLD.colour_string if not self.diff_lock else RGBStrings.WHITE.colour_string, RGBStrings.GOLD.background_string if self.diff_lock else RGBStrings.DARK_BROWN.background_string))
 
     @staticmethod
     def button_wrapper(button, func):

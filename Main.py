@@ -208,6 +208,7 @@ class MainWindow(QtGui.QMainWindow):
         if self.currentGear == Gear.NEUTRAL:
             self.diff_lock = not self.diff_lock
             # TODO: actually update the stuff now
+            self.Quodi.put((3, int(self.diff_lock)))
             button.setText('Diff: Locked' if self.diff_lock else "Diff: Unlocked")
 
     @staticmethod

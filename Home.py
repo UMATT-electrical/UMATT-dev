@@ -4,7 +4,7 @@ import barWidget as BW
 import time
 import os
 
-from widgets import make_button, make_compass_widget, make_label
+from widgets import make_button, make_compass_widget, make_label, make_label_with_image_background
 
 captureTime = 1
 

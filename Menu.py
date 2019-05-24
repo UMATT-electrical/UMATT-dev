@@ -13,6 +13,7 @@ class MenuWindow(QtGui.QWidget):
     def __init__(self, parent=None):
         # initialize basic window function
         super(MenuWindow, self).__init__()
+        from constants import SCREEN, HEIGHT, WIDTH, RGBStrings
 
         '''pixmap = QtGui.QPixmap("UMATT_LOGO_BROWN.jpg")
         pixmap = pixmap.scaled(260,260)
@@ -23,24 +24,42 @@ class MenuWindow(QtGui.QWidget):
         self.make_button = lambda *args, **kwargs: make_button(self, *args, **kwargs)
         self.make_label = lambda *args, **kwargs: make_label(self, *args, **kwargs)
 
-        pixmap2 = QtGui.QPixmap("Full Tractor.PNG")
-        pixmap2 = pixmap2.scaled(500, 300)
-        self.image_logo2 = QtGui.QLabel(self)
-        self.image_logo2.setPixmap(pixmap2)
-        self.image_logo2.move(300, 90)
+        # pixmap2 = QtGui.QPixmap("Full Tractor.PNG")
+        # pixmap2 = pixmap2.scaled(500, 300)
+        # self.image_logo2 = QtGui.QLabel(self)
+        # self.image_logo2.setPixmap(pixmap2)
+        # self.image_logo2.move(300, 90)
 
-        currentTime = time.ctime().split()[3].split(':')
-        time_label = ('%d:%s PM' % (int(currentTime[0]) - 12, currentTime[1]) if
-                      int(currentTime[0]) > 12 else
-                      '%d:%s AM' % (int(currentTime[0]), currentTime[1]))
-        self.label_time = self.make_label(time_label, (167, 69), (0, 0), QtGui.QFont('Times', 20, QtGui.QFont.Bold))
-        # self.grid.addWidget(self.label_message, 0,4,1,3)
+        # currentTime = time.ctime().split()[3].split(':')
+        # time_label = ('%d:%s PM' % (int(currentTime[0]) - 12, currentTime[1]) if
+        #               int(currentTime[0]) > 12 else
+        #               '%d:%s AM' % (int(currentTime[0]), currentTime[1]))
+        # self.label_time = self.make_label(time_label, (167, 69), (0, 0), QtGui.QFont('Times', 20, QtGui.QFont.Bold))
+        # # self.grid.addWidget(self.label_message, 0,4,1,3)
 
         self.button_home = self.make_button('Home', size=(200, 69), position=(600, 411))
 
         self.button_quit = self.make_button('Quit', size=(60, 30), position=(740, 0))
 
-        self.button_settings = self.make_button('Settings', size=(240, 69), position=(30, 120))
+        #self.button_settings = self.make_button('Settings', size=(240, 69), position=(30, 120))
+
+        main_menu_item_size = (HEIGHT / 4 * 19) / 20
+
+        self.label_title = self.make_label(
+            'MENU',
+            size=(2* main_menu_item_size, main_menu_item_size),
+            position=(WIDTH / 2 - main_menu_item_size, HEIGHT/160),
+            font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
+            style_sheet='%s; %s'%(RGBStrings.TRANSPARENT.background_string, RGBStrings.BLACK.colour_string)
+        )
+
+        self.label_limit_box = self.make_label(
+            '',
+            size=(HEIGHT - main_menu_item_size - HEIGHT/40, 2 * main_menu_item_size),
+            position=(WIDTH / 2 - main_menu_item_size, main_menu_item_size + 3*HEIGHT/160),
+            font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
+            style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
+        )
 
         '''self.button_information = QtGui.QPushButton('Info', self)
         self.button_information.setStyleSheet('background-color: rgb(43,21,0); color: rgb(255,184,0)')
@@ -48,7 +67,7 @@ class MenuWindow(QtGui.QWidget):
         self.button_information.resize(240,69)
         self.button_information.move(30, 240)'''
 
-        self.button_diagnostics = self.make_button('Diagnostics', size=(240, 69), position=(30, 360))
+        #self.button_diagnostics = self.make_button('Diagnostics', size=(240, 69), position=(30, 360))
 
         '''self.updateTimer = QtCore.QTimer()
         self.updateTimer.timeout.connect(self.updateDiffDial)

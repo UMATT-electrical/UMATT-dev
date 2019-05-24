@@ -84,7 +84,7 @@ class HomeWindow(QtGui.QWidget):
             'UMATT P19',
             size=(WIDTH - 4 * main_menu_item_size, main_menu_item_size),
             position=(2 * main_menu_item_size, HEIGHT/160),
-            font=QtGui.QFont('Times', 50, QtGui.QFont.Bold),
+            font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.TRANSPARENT.background_string, RGBStrings.BLACK.colour_string)
         )
 

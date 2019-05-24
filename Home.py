@@ -193,7 +193,7 @@ class HomeWindow(QtGui.QWidget):
             margin_width=HEIGHT / 60
         )
 
-        get_center_position = lambda width: int((WIDTH - (left_label_positions[0][0] + left_label_size[0]) - (WIDTH - main_menu_item_size - HEIGHT/160)) - (width/2))
+        get_center_position = lambda width: int((WIDTH + left_label_size[0] + left_label_positions[0][0] - WIDTH/160 - main_menu_item_size)/2)
 
         self.label_title = self.make_label(
             'UMATT 2019',

@@ -83,7 +83,7 @@ class HomeWindow(QtGui.QWidget):
         self.label_title = self.make_label(
             'UMATT P19',
             size=(WIDTH - 4 * main_menu_item_size, main_menu_item_size),
-            position=(2 * main_menu_item_size, main_menu_item_size + HEIGHT/80),
+            position=(2 * main_menu_item_size, HEIGHT/160),
             font=QtGui.QFont('Times', 50, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.TRANSPARENT.background_string, RGBStrings.BLACK.colour_string)
         )
@@ -91,10 +91,32 @@ class HomeWindow(QtGui.QWidget):
         self.label_speed = self.make_label(
             '100 Fucking Fast',
             size=(WIDTH - 4 * main_menu_item_size, main_menu_item_size),
-            position=(2 * main_menu_item_size, 0),
+            position=(2 * main_menu_item_size, main_menu_item_size + HEIGHT/80 + HEIGHT/160),
             font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
         )
+
+        self.label_rpm = self.make_label(
+            'mode',
+            size=(main_menu_item_size * 4, main_menu_item_size),
+            position=(WIDTH - main_menu_item_size *2, 2*(main_menu_item_size + HEIGHT/80) + HEIGHT/160),
+            font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
+            style_sheet='%s; %s'%(RGBStrings.TRANSPARENT.background_string, RGBStrings.BLACK.colour_string)
+        )
+
+        self.label_logo = self.make_label(
+            'wheat umatt',
+            size=(main_menu_item_size, main_menu_item_size),
+            position=(WIDTH / 2 - main_menu_item_size/2, 3*(main_menu_item_size + HEIGHT/80)  + HEIGHT/160),
+            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+            style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
+        )
+
+
+
+
+
+
 
         self.label_gear = self.make_label(
             '',
@@ -111,8 +133,6 @@ class HomeWindow(QtGui.QWidget):
             font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
-
-        font = QtGui.QFont('Times', 20, QtGui.QFont.Bold)
 
         self.label_mode = self.make_label(
             'mode',

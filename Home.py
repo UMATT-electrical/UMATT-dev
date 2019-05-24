@@ -150,14 +150,19 @@ class HomeWindow(QtGui.QWidget):
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
 
+        left_label_font = QtGui.QFont('Times', 30, QtGui.QFont.Bold)
+        left_label_size = (WIDTH/4-10, HEIGHT/6-10)
+
+        left_label_positions = [(5, idx*(left_label_size[1]+5)) for idx in range(7)]
+
         self.temperature_label = make_label_with_image_background(
             self,
-            (WIDTH/4-10, HEIGHT/6-10),
-            (5, 5),
+            left_label_size,
+            left_label_positions[0],
             'temperature.png',
             '00.0 C',
             RGBStrings.DARK_BROWN.background_string,
-            QtGui.QFont('Times', 30, QtGui.QFont.Bold),
+            left_label_font,
             RGBStrings.TRANSPARENT.background_string,
             margin_width=HEIGHT/60
         )

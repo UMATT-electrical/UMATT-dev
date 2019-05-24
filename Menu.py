@@ -84,7 +84,31 @@ class MenuWindow(QtGui.QWidget):
         self.brightness_box = self.make_label(
             '',
             size=(2 * relative_width / 10, relative_height/5),
-            position=(8 * relative_width / 10 + 3*box_margin, 2*box_margin + relative_height),
+            position=(8 * relative_width / 10 + 3*box_margin, 2*box_margin + 2* relative_height / 5),
+            font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
+            style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
+        )
+
+        self.logger_box = self.make_label(
+            '',
+            size=(2 * relative_width / 10, relative_height/5),
+            position=(8 * relative_width / 10 + 3*box_margin, 3*box_margin + 3* relative_height / 5),
+            font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
+            style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
+        )
+
+        self.label_logo = self.make_label(
+            'wheat here',
+            size=(relative_width / 10 - box_margin/2, relative_height/5),
+            position=(8 * relative_width / 10 + 3*box_margin, 4*box_margin + 4* relative_height / 5),
+            font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
+            style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
+        )
+
+        self.button_home_unique = self.make_button(
+            'home',
+            size=(relative_width / 10 - box_margin/2, relative_height/5),
+            position=(9 * relative_width / 10 + 7*box_margin/2, 4*box_margin + 4* relative_height / 5),
             font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
         )

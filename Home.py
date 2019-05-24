@@ -124,7 +124,7 @@ class HomeWindow(QtGui.QWidget):
 
         self.temperature_label = make_label_with_image_background(
             self,
-            (HEIGHT/6-10, WIDTH/4-10),
+            (WIDTH/4-10, HEIGHT/6-10),
             (5, 5),
             'temperature.png',
             '00.0 C',

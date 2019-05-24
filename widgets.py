@@ -73,25 +73,28 @@ def make_label(
     return label
 
 
-def make_label_with_image_background(
-        parent, size, position, image_name, text, background_colour, font, text_colour, margin_width=5):
-    smaller_size = (size[0]-2*margin_width, size[1]-2*margin_width)
-    smaller_position = (position[0]+margin_width, position[1]+margin_width)
+class LabelWithImage:
+    def __init__(self, parent, size, position, image_name, text, background_colour, font, text_colour, margin_width=5):
+        smaller_size = (size[0]-2*margin_width, size[1]-2*margin_width)
+        smaller_position = (position[0]+margin_width, position[1]+margin_width)
 
-    image_size = (size[1]*.75, size[1]*.75)
-    image_position = (smaller_position[0]*1.1, position[1]+(.5*size[1])-(.5*image_size[1]))
+        image_size = (size[1]*.75, size[1]*.75)
+        image_position = (smaller_position[0]*1.1, position[1]+(.5*size[1])-(.5*image_size[1]))
 
-    text_size = (size[0]*.7, size[1]*.8)
-    text_position = (position[0]+size[0]*.25, position[1]+(size[1]*.5) - (text_size[1]*.5))
+        text_size = (size[0]*.7, size[1]*.8)
+        text_position = (position[0]+size[0]*.25, position[1]+(size[1]*.5) - (text_size[1]*.5))
 
-    background_label = make_label(
-        parent, '', size=size, position=position, alignment=None, style_sheet=background_colour)
+        background_label = make_label(
+            parent, '', size=size, position=position, alignment=None, style_sheet=background_colour)
 
-    text_background = make_label(parent, '', smaller_size, smaller_position, style_sheet=RGBStrings.WHITE.background_string)
+        text_background = make_label(parent, '', smaller_size, smaller_position, style_sheet=RGBStrings.WHITE.background_string)
 
-    image = make_pixmap(parent, image_name, image_size, image_position)
+        image = make_pixmap(parent, image_name, image_size, image_position)
 
-    text_label = make_label(
-        parent, text, size=text_size, position=text_position, font=font, style_sheet=text_colour, )
+        text_label = make_label(
+            parent, text, size=text_size, position=text_position, font=font, style_sheet=text_colour, )
 
-    return background_label, text_background, image, text_label
+        self.background = background_label
+        self.text_background = text_background
+        self.image = image
+        self.text = text

@@ -4,7 +4,7 @@ import barWidget as BW
 import time
 import os
 
-from widgets import make_button, make_compass_widget, make_label, make_label_with_image_background
+from widgets import make_button, make_compass_widget, make_label, LabelWithImage
 
 captureTime = 1
 
@@ -112,12 +112,6 @@ class HomeWindow(QtGui.QWidget):
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
 
-
-
-
-
-
-
         self.label_gear = self.make_label(
             '',
             size=(main_menu_item_size, main_menu_item_size),
@@ -155,7 +149,7 @@ class HomeWindow(QtGui.QWidget):
 
         left_label_positions = [(5, (idx*left_label_size[1])+5*(idx+1)) for idx in range(7)]
 
-        self.temperature_label = make_label_with_image_background(
+        self.temperature_label = LabelWithImage(
             self,
             left_label_size,
             left_label_positions[0],
@@ -167,7 +161,7 @@ class HomeWindow(QtGui.QWidget):
             margin_width=HEIGHT/60
         )
 
-        self.pressure_label = make_label_with_image_background(
+        self.pressure_label = LabelWithImage(
             self,
             left_label_size,
             left_label_positions[1],
@@ -179,7 +173,7 @@ class HomeWindow(QtGui.QWidget):
             margin_width=HEIGHT/60
         )
 
-        self.voltage_label = make_label_with_image_background(
+        self.voltage_label = LabelWithImage(
             self,
             left_label_size,
             left_label_positions[2],
@@ -191,9 +185,9 @@ class HomeWindow(QtGui.QWidget):
             margin_width=HEIGHT/60
         )
 
-        self.rpm_label = make_label_with_image_background(
+        self.rpm_label = LabelWithImage(
             self,
-            (WIDTH/5-10, HEIGHT/7-10),
+            left_label_size,
             left_label_positions[3],
             'rpm.png',
             '0000 RPM',
@@ -202,6 +196,7 @@ class HomeWindow(QtGui.QWidget):
             RGBStrings.TRANSPARENT.background_string,
             margin_width=HEIGHT/60
         )
+        self.rpm_label.image.resize((left_label_size[0]*.8, left_label_size[1]*.8))
 
         # self.label_message = self.make_label(
         #     'Engine Not On',

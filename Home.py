@@ -84,7 +84,7 @@ class HomeWindow(QtGui.QWidget):
             '',
             size=(main_menu_item_size, main_menu_item_size),
             position=(WIDTH - main_menu_item_size - HEIGHT/160, HEIGHT/160),
-            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+            font=QtGui.QFont('Times', 40, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
 
@@ -92,7 +92,7 @@ class HomeWindow(QtGui.QWidget):
             'Diff Lock',
             size=(main_menu_item_size, main_menu_item_size),
             position=(WIDTH - main_menu_item_size - HEIGHT/160, main_menu_item_size + HEIGHT/80 + HEIGHT/160),
-            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+            font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
 
@@ -100,7 +100,7 @@ class HomeWindow(QtGui.QWidget):
             'mode',
             size=(main_menu_item_size, main_menu_item_size),
             position=(WIDTH - main_menu_item_size - HEIGHT/160, 2*(main_menu_item_size + HEIGHT/80) + HEIGHT/160),
-            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+            font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
 
@@ -108,7 +108,7 @@ class HomeWindow(QtGui.QWidget):
             'Menu',
             size=(main_menu_item_size, main_menu_item_size),
             position=(WIDTH - main_menu_item_size - HEIGHT/160, 3*(main_menu_item_size + HEIGHT/80)  + HEIGHT/160),
-            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+            font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
 

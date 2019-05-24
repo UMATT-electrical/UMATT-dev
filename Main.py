@@ -4,7 +4,7 @@ from PyQt4 import QtGui, QtCore
 
 app = QtGui.QApplication(sys.argv)
 
-from constants import Gear
+from constants import Gear, RGBStrings
 
 from multiprocessing import Process, Queue
 # import SPImodule_002 as SPI
@@ -209,7 +209,7 @@ class MainWindow(QtGui.QMainWindow):
             self.diff_lock = not self.diff_lock
             # TODO: actually update the stuff now
             self.Quodi.put((3, int(self.diff_lock)))
-            button.setText('Diff: Locked' if self.diff_lock else "Diff: Unlocked")
+            button.setStyleSheet(RGBStrings.GOLD.background_string if self.diff_lock else RGBStrings.DARK_BROWN.background_string)
 
     @staticmethod
     def button_wrapper(button, func):

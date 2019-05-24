@@ -139,7 +139,7 @@ class HomeWindow(QtGui.QWidget):
             RGBStrings.DARK_BROWN.background_string,
             QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             RGBStrings.TRANSPARENT.background_string,
-            margin_width=20
+            margin_width=HEIGHT/60
         )
 
         # self.label_message = self.make_label(

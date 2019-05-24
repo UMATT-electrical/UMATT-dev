@@ -77,11 +77,21 @@ def make_label_with_image_background(
         parent, size, position, image_name, text, background_colour, font, text_colour, margin_width=5):
     smaller_size = (size[0]-2*margin_width, size[1]-2*margin_width)
     smaller_position = (position[0]+margin_width, position[1]+margin_width)
+
+    image_size = (size[1]*.9, size[1]*.9)
+    image_position = (smaller_position[0]*1.05, smaller_position[1]*1.05)
+
+    text_size = (size[0]*.5, size[1]*.5)
+    text_position = (position[0]+size[0]+.2, position[1]+size[1]*.2)
+
     background_label = make_label(
         parent, '', size=size, position=position, alignment=None, style_sheet=background_colour)
+
     text_background = make_label(parent, '', smaller_size, smaller_position, style_sheet=RGBStrings.WHITE.background_string)
-    image = make_pixmap(parent, image_name, (size[1]*.75, size[1]*.75), (position[0]+size[0]*.2, position[1]+size[1]*.2))
+
+    image = make_pixmap(parent, image_name, image_size, image_position)
+
     text_label = make_label(
-        parent, text, size=(size[0]*.5, size[1]*.5), position=(position[0]+size[0]+.2, position[1]+size[1]*.2),
-        font=font, style_sheet=text_colour)
+        parent, text, size=text_size, position=text_position, font=font, style_sheet=text_colour)
+
     return background_label, text_background, image, text_label

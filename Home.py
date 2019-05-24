@@ -76,14 +76,14 @@ class HomeWindow(QtGui.QWidget):
         time_label = ('%d:%s PM' % (int(currentTime[0]) - 12, currentTime[1]) if
                       int(currentTime[0]) > 12 else
                       '%d:%s AM' % (int(currentTime[0]), currentTime[1]))
-        self.label_time = self.make_label(time_label, (167, 69), (0, 0), QtGui.QFont('Times', 20, QtGui.QFont.Bold))
+        self.label_time = self.make_label(time_label, (167, 69), (0, 0), QtGui.QFont('Times', 14, QtGui.QFont.Bold))
 
-        main_menu_item_size = HEIGHT / 4
+        main_menu_item_size = (HEIGHT / 4 * 50) / 51
         self.label_gear = self.make_label(
             '',
             size=(main_menu_item_size, main_menu_item_size),
             position=(WIDTH - main_menu_item_size, 0),
-            font=QtGui.QFont('Times', 90, QtGui.QFont.Bold),
+            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
 
@@ -91,7 +91,7 @@ class HomeWindow(QtGui.QWidget):
             'Diff Lock',
             size=(main_menu_item_size, main_menu_item_size),
             position=(WIDTH - main_menu_item_size, main_menu_item_size),
-            font=QtGui.QFont('Times', 90, QtGui.QFont.Bold),
+            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
 
@@ -101,7 +101,7 @@ class HomeWindow(QtGui.QWidget):
             '',
             size=(main_menu_item_size, main_menu_item_size),
             position=(WIDTH - main_menu_item_size, 2*main_menu_item_size),
-            font=QtGui.QFont('Times', 90, QtGui.QFont.Bold),
+            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
 
@@ -109,7 +109,7 @@ class HomeWindow(QtGui.QWidget):
             'Menu',
             size=(main_menu_item_size, main_menu_item_size),
             position=(WIDTH - main_menu_item_size, 3*main_menu_item_size),
-            font=QtGui.QFont('Times', 90, QtGui.QFont.Bold),
+            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
 

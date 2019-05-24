@@ -78,7 +78,7 @@ class HomeWindow(QtGui.QWidget):
                       '%d:%s AM' % (int(currentTime[0]), currentTime[1]))
         self.label_time = self.make_label(time_label, (167, 69), (0, 0), QtGui.QFont('Times', 14, QtGui.QFont.Bold))
 
-        main_menu_item_size = (HEIGHT / 4 * 50) / 51
+        main_menu_item_size = (HEIGHT / 4 * 19) / 20
         self.label_gear = self.make_label(
             '',
             size=(main_menu_item_size, main_menu_item_size),
@@ -90,7 +90,7 @@ class HomeWindow(QtGui.QWidget):
         self.button_difflock = self.make_button(
             'Diff Lock',
             size=(main_menu_item_size, main_menu_item_size),
-            position=(WIDTH - main_menu_item_size, main_menu_item_size),
+            position=(WIDTH - main_menu_item_size, main_menu_item_size + HEIGHT/360),
             font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
@@ -98,9 +98,9 @@ class HomeWindow(QtGui.QWidget):
         font = QtGui.QFont('Times', 20, QtGui.QFont.Bold)
 
         self.label_mode = self.make_label(
-            '',
+            'mode',
             size=(main_menu_item_size, main_menu_item_size),
-            position=(WIDTH - main_menu_item_size, 2*main_menu_item_size),
+            position=(WIDTH - main_menu_item_size, 2*(main_menu_item_size + HEIGHT/360)),
             font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
@@ -108,7 +108,7 @@ class HomeWindow(QtGui.QWidget):
         self.button_menu = self.make_button(
             'Menu',
             size=(main_menu_item_size, main_menu_item_size),
-            position=(WIDTH - main_menu_item_size, 3*main_menu_item_size),
+            position=(WIDTH - main_menu_item_size, 3*(main_menu_item_size + HEIGHT/360)),
             font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )

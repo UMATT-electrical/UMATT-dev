@@ -1,3 +1,5 @@
+import math
+
 from PyQt4 import QtGui, QtCore
 import compassWidget2 as CW
 import barWidget as BW
@@ -245,6 +247,10 @@ class HomeWindow(QtGui.QWidget):
         self.diff_rpm_label.text.setText('%.2f MPH' % self.parent().parent().value_diffSpeed)
 
         self.clock_label.text.setText(time_label)
+        runtime = self.parent().parent().runtime
+        runtime_hours = math.floor(runtime/60)
+        runtime_minutes = runtime % 60
+        self.time_label.text.setText("%s:%s hours" % (runtime_hours, runtime_minutes))
 
         self.label_gear.setText(self.parent().parent().currentGear.value)
 

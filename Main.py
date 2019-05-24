@@ -71,6 +71,9 @@ class MainWindow(QtGui.QMainWindow):
         self.sevcon_AltProfile = 0
         self.warning_gearlockout = [0, 0]
 
+        # TODO make this track runtime
+        self.runtime = 136
+
         self.currentGear = Gear.NEUTRAL
 
         self.initDrive()

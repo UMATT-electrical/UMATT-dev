@@ -105,6 +105,7 @@ class MainWindow(QtGui.QMainWindow):
         self.settingsWindowWidget.button_modeManeuver.clicked.connect(self.setModeManeuver)
         self.settingsWindowWidget.button_modePull.clicked.connect(self.setModePulling)
         self.homeWindowWidget.button_mode.clicked.connect(self.button_wrapper(self.homeWindowWidget.button_mode, self.set_mode))
+        self.homeWindowWidget.button_difflock.clicked.connect(self.button_wrapper(self.homeWindowWidget.button_difflock, self.set_diff_lock))
 
         self.diagnosticsWindowWidget.button_home.clicked.connect(self.gotoHome)
         self.diagnosticsWindowWidget.button_menu.clicked.connect(self.gotoMenu)
@@ -118,6 +119,7 @@ class MainWindow(QtGui.QMainWindow):
         # self.setCursor(QtGui.QCursor(QtCore.Qt.BlankCursor))
         self.showFullScreen()
         self.mode = 0
+        self.diff_lock = False
 
     def Update(self):
         leave = 0
@@ -201,6 +203,13 @@ class MainWindow(QtGui.QMainWindow):
                 button.setText(Mode.__getattribute__(Mode, items[self.mode]).value)
             if Mode.__getattribute__(Mode, items[self.mode]) == Mode.AUTO:
                 print('Auto Mode Doesnt Exist Yet. Yell at Owen lol.')
+
+    def set_diff_lock(self, button):
+        if self.currentGear == Gear.NEUTRAL:
+            self.diff_lock = not self.diff_lock
+            # TODO: actually update the stuff now
+            button.setText('Diff: Locked' if self.diff_lock else "Diff: Unlocked")
+
     @staticmethod
     def button_wrapper(button, func):
         return lambda: func(button)

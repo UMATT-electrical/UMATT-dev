@@ -41,7 +41,7 @@ class MenuWindow(QtGui.QWidget):
 
         self.button_quit = self.make_button('Quit', size=(60, 30), position=(740, 0))
 
-        #self.button_settings = self.make_button('Settings', size=(240, 69), position=(30, 120))
+        self.button_settings = self.make_button('Settings', size=(240, 69), position=(30, 120))
 
         main_menu_item_size = (HEIGHT / 4 * 19) / 20
 

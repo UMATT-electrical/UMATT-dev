@@ -99,7 +99,7 @@ class HomeWindow(QtGui.QWidget):
         self.label_rpm = self.make_label(
             '0000 RPM',
             size=(main_menu_item_size * 3, main_menu_item_size),
-            position=(WIDTH/2 - main_menu_item_size *2, 2*(main_menu_item_size + HEIGHT/80) + HEIGHT/160),
+            position=(WIDTH/2 - 3*main_menu_item_size /2, 2*(main_menu_item_size + HEIGHT/80) + HEIGHT/160),
             font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
         )

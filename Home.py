@@ -78,12 +78,21 @@ class HomeWindow(QtGui.QWidget):
                       '%d:%s AM' % (int(currentTime[0]), currentTime[1]))
         self.label_time = self.make_label(time_label, (167, 69), (0, 0), QtGui.QFont('Times', 14, QtGui.QFont.Bold))
 
+
+        self.label_title = self.make_label(
+            'UMATT P19',
+            size=(WIDTH, main_menu_item_size),
+            position=(0, 0),
+            font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
+            style_sheet='%s; %s'%(RGBStrings.TRANSPARENT.background_string, RGBStrings.BLACK.colour_string)
+        )
+
         main_menu_item_size = (HEIGHT / 4 * 19) / 20
 
         self.label_gear = self.make_label(
             '',
             size=(main_menu_item_size, main_menu_item_size),
-            position=(WIDTH - main_menu_item_size, 0),
+            position=(WIDTH - main_menu_item_size - HEIGHT/80, 0),
             font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
@@ -91,7 +100,7 @@ class HomeWindow(QtGui.QWidget):
         self.button_difflock = self.make_button(
             'Diff Lock',
             size=(main_menu_item_size, main_menu_item_size),
-            position=(WIDTH - main_menu_item_size, main_menu_item_size + HEIGHT/80),
+            position=(WIDTH - main_menu_item_size - HEIGHT/80, main_menu_item_size + HEIGHT/80),
             font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
@@ -101,7 +110,7 @@ class HomeWindow(QtGui.QWidget):
         self.label_mode = self.make_label(
             'mode',
             size=(main_menu_item_size, main_menu_item_size),
-            position=(WIDTH - main_menu_item_size, 2*(main_menu_item_size + HEIGHT/80)),
+            position=(WIDTH - main_menu_item_size - HEIGHT/80, 2*(main_menu_item_size + HEIGHT/80)),
             font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
@@ -109,10 +118,11 @@ class HomeWindow(QtGui.QWidget):
         self.button_menu = self.make_button(
             'Menu',
             size=(main_menu_item_size, main_menu_item_size),
-            position=(WIDTH - main_menu_item_size, 3*(main_menu_item_size + HEIGHT/80)),
+            position=(WIDTH - main_menu_item_size - HEIGHT/80, 3*(main_menu_item_size + HEIGHT/80)),
             font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
+
 
         self.label_message = self.make_label(
             'Engine Not On',

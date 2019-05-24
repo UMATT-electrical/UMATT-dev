@@ -130,6 +130,16 @@ class HomeWindow(QtGui.QWidget):
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
 
+        self.temperature_label = make_label_with_image_background(
+            self,
+            (WIDTH/4-10, HEIGHT/6-10),
+            (5, 5),
+            'temperature.png',
+            '00.0 C',
+            RGBStrings.DARK_BROWN.background_string,
+            QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+            RGBStrings.TRANSPARENT.background_string,
+        )
 
         # self.label_message = self.make_label(
         #     'Engine Not On',

@@ -36,3 +36,9 @@ class Gear(Enum):
     LOW = "L"
     FORWARD = 'F'
     REVERSE = "R"
+
+
+class Mode(Enum):
+    PULL = 'Pull'
+    MANEUVER = "Maneuver"
+    AUTO = "Auto"

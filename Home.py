@@ -157,7 +157,7 @@ class HomeWindow(QtGui.QWidget):
             margin_width=HEIGHT/60
         )
 
-        self.rpm_label = LabelWithImage(
+        self.diff_rpm_label = LabelWithImage(
             self,
             left_label_size,
             left_label_positions[3],
@@ -200,7 +200,7 @@ class HomeWindow(QtGui.QWidget):
             size=(WIDTH - 4 * main_menu_item_size, main_menu_item_size),
             position=(get_center_position(WIDTH - 4 * main_menu_item_size), HEIGHT/160),
             font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
-            style_sheet='%s; %s'%(RGBStrings.TRANSPARENT.background_string, RGBStrings.BLACK.colour_string)
+            style_sheet='%s; %s' % (RGBStrings.TRANSPARENT.background_string, RGBStrings.BLACK.colour_string)
         )
 
         self.label_speed = LabelWithImage(
@@ -220,7 +220,7 @@ class HomeWindow(QtGui.QWidget):
             size=(main_menu_item_size * 3, main_menu_item_size),
             position=(get_center_position(main_menu_item_size * 3), 2*(main_menu_item_size + HEIGHT/80) + HEIGHT/160),
             font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
-            style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
+            style_sheet='%s; %s' % (RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
         )
 
         self.label_logo = make_pixmap(
@@ -230,43 +230,9 @@ class HomeWindow(QtGui.QWidget):
             scale_to_fit=False
         )
 
-        # self.label_message = self.make_label(
-        #     'Engine Not On',
-        #     size=(333, 69),
-        #     position=(233, 0),
-        #     font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
-        # )
-        #
-        # self.move(0, 0)
-        # # self.grid.addWidget(self.label_message, 0,4,1,3)
-        #
-        # self.label_diffspeed = self.make_label(
-        #     '',
-        #     size=(100, 69),
-        #     position=(360, 330),
-        #     font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
-        #     style_sheet='background-color: rgba(0,0,0,0%)'
-        # )
-        #
-        # self.label_engineSpeed = self.make_label(
-        #     '0 RPM',
-        #     size=(100, 69),
-        #     position=(85, 185),
-        #     font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
-        #     style_sheet='background-color: rgba(0,0,0,0%)'
-        # )
-        #
-        # self.label_motorSpeed = self.make_label(
-        #     '0 RPM',
-        #     size=(100, 69),
-        #     position=(85, 400),
-        #     font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
-        #     style_sheet='background-color: rgba(0,0,0,0%)'
-        # )
-
         self.updateTimer = QtCore.QTimer()
         self.updateTimer.timeout.connect(self.update)
-        self.updateTimer.start(10)
+        self.updateTimer.start(1)
 
     def update(self):
         # self.updateDiffDial()

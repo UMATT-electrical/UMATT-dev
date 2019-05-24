@@ -196,7 +196,7 @@ class HomeWindow(QtGui.QWidget):
             RGBStrings.TRANSPARENT.background_string,
             margin_width=HEIGHT/60
         )
-        self.rpm_label.image.resize((left_label_size[0]*.8, left_label_size[1]*.8))
+        self.rpm_label.image.resize(left_label_size[0]*.8, left_label_size[1]*.8)
 
         # self.label_message = self.make_label(
         #     'Engine Not On',

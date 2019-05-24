@@ -81,8 +81,8 @@ def make_label_with_image_background(
     image_size = (size[1]*.75, size[1]*.75)
     image_position = (smaller_position[0]*1.1, position[1]+(.5*size[1])-(.5*image_size[1]))
 
-    text_size = (size[0]*.5, size[1]*.5)
-    text_position = (position[0]+size[0]*.5, position[1]+(size[1]*.5) - (text_size[1]*.5))
+    text_size = (size[0]*.7, size[1]*.8)
+    text_position = (position[0]+size[0]*.25, position[1]+(size[1]*.5) - (text_size[1]*.5))
 
     background_label = make_label(
         parent, '', size=size, position=position, alignment=None, style_sheet=background_colour)
@@ -92,6 +92,6 @@ def make_label_with_image_background(
     image = make_pixmap(parent, image_name, image_size, image_position)
 
     text_label = make_label(
-        parent, text, size=text_size, position=text_position, font=font, style_sheet=text_colour)
+        parent, text, size=text_size, position=text_position, font=font, style_sheet=text_colour, )
 
     return background_label, text_background, image, text_label

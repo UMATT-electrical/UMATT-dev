@@ -78,7 +78,7 @@ def make_label_with_image_background(
     smaller_size = (size[0]-2*margin_width, size[1]-2*margin_width)
     smaller_position = (position[0]+margin_width, position[1]+margin_width)
 
-    image_size = (size[1]*.9, size[1]*.9)
+    image_size = (size[1]*.6, size[1]*6)
     image_position = (smaller_position[0]*1.05, smaller_position[1]*1.05)
 
     text_size = (size[0]*.5, size[1]*.5)

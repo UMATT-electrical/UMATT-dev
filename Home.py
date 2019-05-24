@@ -150,7 +150,7 @@ class HomeWindow(QtGui.QWidget):
         spacing = total_height - box_height
         left_label_size = (WIDTH / 4 - 10, box_height)
         left_label_positions = [
-            (spacing, (idx * left_label_size[1]) + spacing * (idx + 1)) for idx in range(7)
+            (spacing, (idx * left_label_size[1]) + spacing * (idx + .5)) for idx in range(7)
         ]
 
         self.temperature_label = LabelWithImage(

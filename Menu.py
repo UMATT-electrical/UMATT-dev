@@ -101,7 +101,7 @@ class MenuWindow(QtGui.QWidget):
             'wheat here',
             size=(relative_width / 10 - box_margin/2, relative_height/5),
             position=(8 * relative_width / 10 + 3*box_margin, 4*box_margin + 4* relative_height / 5),
-            font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
+            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
         )
 
@@ -109,7 +109,7 @@ class MenuWindow(QtGui.QWidget):
             'home',
             size=(relative_width / 10 - box_margin/2, relative_height/5),
             position=(9 * relative_width / 10 + 7*box_margin/2, 4*box_margin + 4* relative_height / 5),
-            font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
+            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
         )
 

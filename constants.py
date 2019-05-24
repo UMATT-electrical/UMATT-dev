@@ -7,6 +7,7 @@ class RGBStrings(Enum):
     GOLD = 'rgb(255,184,0)'
     TRANSPARENT = 'rgba(0,0,0,0%)'
     WHITE = 'white'
+    BLACK = 'black'
 
     @property
     def background_string(self):

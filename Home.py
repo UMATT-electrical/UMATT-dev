@@ -78,6 +78,7 @@ class HomeWindow(QtGui.QWidget):
                       '%d:%s AM' % (int(currentTime[0]), currentTime[1]))
         self.label_time = self.make_label(time_label, (167, 69), (0, 0), QtGui.QFont('Times', 14, QtGui.QFont.Bold))
 
+        main_menu_item_size = (HEIGHT / 4 * 19) / 20
 
         self.label_title = self.make_label(
             'UMATT P19',
@@ -86,8 +87,6 @@ class HomeWindow(QtGui.QWidget):
             font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.TRANSPARENT.background_string, RGBStrings.BLACK.colour_string)
         )
-
-        main_menu_item_size = (HEIGHT / 4 * 19) / 20
 
         self.label_gear = self.make_label(
             '',

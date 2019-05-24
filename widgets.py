@@ -82,7 +82,7 @@ def make_label_with_image_background(
     image_position = (smaller_position[0]*1.1, position[1]+(.5*size[1])-(.5*image_size[1]))
 
     text_size = (size[0]*.5, size[1]*.5)
-    text_position = (position[0]+size[0]+.2, position[1]+size[1]*.2)
+    text_position = (position[0]+size[0]+.2, position[1]+(size[1]*.5) - (text_size[1]*.5))
 
     background_label = make_label(
         parent, '', size=size, position=position, alignment=None, style_sheet=background_colour)

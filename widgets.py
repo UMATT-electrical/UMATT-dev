@@ -16,7 +16,7 @@ def make_pixmap(parent, relative_file, size, position=None, scale_to_fit=True):
     return image_logo
 
 
-def make_button(parent, label, font=None, size=None, position=None, style_sheet=None, image=None):
+def make_button(parent, label="", font=None, size=None, position=None, style_sheet=None, image=None):
     button = QtGui.QPushButton(label, parent)
     if style_sheet:
         button.setStyleSheet(style_sheet)

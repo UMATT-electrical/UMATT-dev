@@ -92,12 +92,12 @@ class HomeWindow(QtGui.QWidget):
         )
 
         self.button_difflock = self.make_button(
-            "Diff Lock",
+            'Diff Lock',
             size=(main_menu_item_size, main_menu_item_size),
             position=(WIDTH - main_menu_item_size - HEIGHT/160, main_menu_item_size + HEIGHT/80 + HEIGHT/160),
             font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string),
-            image='DiffLock.png'
+            # image='DiffLock.png'
         )
 
         self.button_mode = self.make_button(

@@ -29,7 +29,7 @@ def make_button(parent, label, font=None, size=None, position=None, style_sheet=
         button.move(*position)
     if image:
         button.setIcon(QtGui.QIcon(image))
-        button.setIconSize(QtGui.QSize(*size))
+        button.setIconSize(QtCore.QSize(*size))
     return button
 
 

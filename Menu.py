@@ -45,6 +45,9 @@ class MenuWindow(QtGui.QWidget):
 
         main_menu_item_size = (HEIGHT / 4 * 19) / 20
 
+        relative_width = 26*width / 30
+        box_margin = width / 30;
+
         self.label_title = self.make_label(
             'MENU',
             size=(2* main_menu_item_size, main_menu_item_size),
@@ -53,10 +56,18 @@ class MenuWindow(QtGui.QWidget):
             style_sheet='%s; %s'%(RGBStrings.TRANSPARENT.background_string, RGBStrings.BLACK.colour_string)
         )
 
+        self.diagnostics_box = self.make_label(
+            '',
+            size=(4*relative_width/10, HEIGHT - 2*box_margin),
+            position=(box_margin, box_margin),
+            font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
+            style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.BLACK.colour_string)
+        )
+
         self.label_limit_box = self.make_label(
             '',
-            size=(main_menu_item_size * 3, 2 * HEIGHT - main_menu_item_size - HEIGHT/40),
-            position=(WIDTH / 2 - 3 * main_menu_item_size / 2, main_menu_item_size + 3*HEIGHT/160),
+            size=(4 * relative_width / 10, HEIGHT - box_margin - main_menu_item_size),
+            position=(4 * relative_width / 10 + 2*box_margin, main_menu_item_size),
             font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
         )

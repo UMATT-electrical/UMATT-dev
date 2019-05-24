@@ -100,7 +100,7 @@ class HomeWindow(QtGui.QWidget):
         )
 
         self.button_mode = self.make_button(
-            'mode: Pull',
+            'Pull',
             size=(main_menu_item_size, main_menu_item_size),
             position=(WIDTH - main_menu_item_size - HEIGHT/160, 2*(main_menu_item_size + HEIGHT/80) + HEIGHT/160),
             font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),

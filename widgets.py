@@ -5,9 +5,9 @@ from constants import RGBStrings
 
 def make_pixmap(parent, relative_file, size, position=None):
     pixmap = QtGui.QPixmap(relative_file)
-    pixmap = pixmap.scaled(*size)
     image_logo = QtGui.QLabel(parent)
     image_logo.setPixmap(pixmap)
+    image_logo.resize(*size)
     if position:
         image_logo.move(*position)
     return image_logo
@@ -78,8 +78,8 @@ def make_label_with_image_background(
     smaller_size = (size[0]-2*margin_width, size[1]-2*margin_width)
     smaller_position = (position[0]+margin_width, position[1]+margin_width)
 
-    image_size = (size[1]*.9, size[1]*.9)
-    image_position = (smaller_position[0]*1.05, smaller_position[1]*1.05)
+    image_size = (size[1]*.6, size[1]*.6)
+    image_position = (smaller_position[0]*1.1, smaller_position[1]*1.2)
 
     text_size = (size[0]*.5, size[1]*.5)
     text_position = (position[0]+size[0]+.2, position[1]+size[1]*.2)

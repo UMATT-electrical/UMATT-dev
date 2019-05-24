@@ -188,9 +188,10 @@ class MainWindow(QtGui.QMainWindow):
     def set_mode(self, button):
         from constants import Mode
         from Home import mode
+        items = [item for item in list(Mode.__dict__.keys()) if item.isupper()]
         mode += 1
         mode %= 3
-        button.setText("value")
+        button.setText(Mode.__getattribute__(Mode, items[mode]).value)
 
     @staticmethod
     def button_wrapper(button, func):

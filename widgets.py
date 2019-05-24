@@ -28,8 +28,7 @@ def make_button(parent, label, font=None, size=None, position=None, style_sheet=
     if position:
         button.move(*position)
     if image:
-        pixmap = QtGui.QPixmap(image)
-        button.setIcon(pixmap)
+        button.setIcon(QtGui.QIcon(image))
         button.setIconSize(QtGui.QSize(*size))
     return button
 

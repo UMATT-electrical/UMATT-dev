@@ -5,8 +5,8 @@ from constants import RGBStrings
 
 def make_pixmap(parent, relative_file, size, position=None):
     pixmap = QtGui.QPixmap(relative_file)
-    pixmap.scaledToWidth(size[0]*.8)
-    pixmap.scaledToHeight(size[1]*.8)
+    pixmap.scaledToWidth(size[0])
+    pixmap.scaledToHeight(size[1])
     image_logo = QtGui.QLabel(parent)
     image_logo.setPixmap(pixmap)
     image_logo.resize(*size)

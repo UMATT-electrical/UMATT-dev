@@ -55,8 +55,8 @@ class MenuWindow(QtGui.QWidget):
 
         self.label_limit_box = self.make_label(
             '',
-            size=(HEIGHT - main_menu_item_size - HEIGHT/40, 2 * main_menu_item_size),
-            position=(WIDTH / 2 - main_menu_item_size, main_menu_item_size + 3*HEIGHT/160),
+            size=(main_menu_item_size * 3, 2 * HEIGHT - main_menu_item_size - HEIGHT/40),
+            position=(WIDTH / 2 - 3 * main_menu_item_size / 2, main_menu_item_size + 3*HEIGHT/160),
             font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
         )

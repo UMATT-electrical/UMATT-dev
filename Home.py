@@ -145,10 +145,12 @@ class HomeWindow(QtGui.QWidget):
         )
 
         left_label_font = QtGui.QFont('Times', 30, QtGui.QFont.Bold)
-        left_label_size = (WIDTH / 4 - 10, HEIGHT / 6 - 10)
-        left_label_offsets = (HEIGHT / 7 - left_label_size[0]) / 2
+        total_height = HEIGHT/7
+        box_height = int(HEIGHT / 7 *.95)
+        spacing = total_height - box_height
+        left_label_size = (WIDTH / 4 - 10, box_height)
         left_label_positions = [
-            (left_label_offsets, (idx * left_label_size[0]) + left_label_offsets * (idx + 1)) for idx in range(7)
+            (spacing, (idx * left_label_size[1]) + spacing * (idx + 1)) for idx in range(7)
         ]
 
         self.temperature_label = LabelWithImage(

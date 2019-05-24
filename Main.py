@@ -117,6 +117,7 @@ class MainWindow(QtGui.QMainWindow):
         self.setStyleSheet("background-color: white")
         # self.setCursor(QtGui.QCursor(QtCore.Qt.BlankCursor))
         self.showFullScreen()
+        self.mode = 0
 
     def Update(self):
         leave = 0
@@ -187,11 +188,10 @@ class MainWindow(QtGui.QMainWindow):
 
     def set_mode(self, button):
         from constants import Mode
-        from Home import mode
         items = [item for item in list(Mode.__dict__.keys()) if item.isupper()]
-        mode += 1
-        mode %= 3
-        button.setText(Mode.__getattribute__(Mode, items[mode]).value)
+        self.mode += 1
+        self.mode %= 3
+        button.setText(Mode.__getattribute__(Mode, items[self.mode]).value)
 
     @staticmethod
     def button_wrapper(button, func):

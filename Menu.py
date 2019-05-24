@@ -46,12 +46,13 @@ class MenuWindow(QtGui.QWidget):
         main_menu_item_size = (HEIGHT / 4 * 19) / 20
 
         relative_width = 26*WIDTH / 30
-        box_margin = WIDTH / 30;
+        box_margin = WIDTH / 30
+        relative_height = HEIGHT - 5 * box_margin;
 
         self.label_title = self.make_label(
             'MENU',
-            size=(2* main_menu_item_size, main_menu_item_size),
-            position=(WIDTH / 2 - main_menu_item_size, HEIGHT/160),
+            size=(4 * relative_width / 10, main_menu_item_size),
+            position=(4 * relative_width / 10 + 2*box_margin, HEIGHT/160),
             font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.TRANSPARENT.background_string, RGBStrings.BLACK.colour_string)
         )
@@ -71,6 +72,23 @@ class MenuWindow(QtGui.QWidget):
             font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
         )
+
+        self.time_box = self.make_label(
+            '',
+            size=(2 * relative_width / 10, 2*relative_height/5),
+            position=(8 * relative_width / 10 + 3*box_margin, box_margin),
+            font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
+            style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
+        )
+
+        self.brightness_box = self.make_label(
+            '',
+            size=(2 * relative_width / 10, relative_height/5),
+            position=(8 * relative_width / 10 + 3*box_margin, 2*box_margin + relative_height),
+            font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
+            style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
+        )
+
 
         '''self.button_information = QtGui.QPushButton('Info', self)
         self.button_information.setStyleSheet('background-color: rgb(43,21,0); color: rgb(255,184,0)')

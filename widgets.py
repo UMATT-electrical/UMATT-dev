@@ -16,8 +16,13 @@ def make_pixmap(parent, relative_file, size, position=None, scale_to_fit=True):
     return image_logo
 
 
-def make_button(parent, label, font=None, size=None, position=None, style_sheet=None, pixmap=None):
-    button = QtGui.QPushButton(label, parent)
+def make_button(parent, label=None, font=None, size=None, position=None, style_sheet=None, pixmap=None):
+    if label:
+        button = QtGui.QPushButton(label, parent)
+    elif pixmap:
+        button = QtGui.QPushButton(QtGui.QIcon(pixmap), parent)
+    else:
+        raise Exception("Only one of label or pixmap")
     if style_sheet:
         button.setStyleSheet(style_sheet)
     # nfont.setStyleSheet('background-color: rgb(255,184,0); color: rgb(')
@@ -27,10 +32,6 @@ def make_button(parent, label, font=None, size=None, position=None, style_sheet=
         button.resize(*size)
     if position:
         button.move(*position)
-    if pixmap:
-        if label:
-            raise Exception("Only one of label or pixmap")
-        button.setPixmap(pixmap)
     return button
 
 

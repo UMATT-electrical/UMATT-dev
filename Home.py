@@ -197,6 +197,30 @@ class HomeWindow(QtGui.QWidget):
             margin_width=HEIGHT/60
         )
 
+        self.time_label = LabelWithImage(
+            self,
+            left_label_size,
+            left_label_positions[4],
+            'time.png',
+            '00:00 Hours',
+            RGBStrings.DARK_BROWN.background_string,
+            left_label_font,
+            RGBStrings.TRANSPARENT.background_string,
+            margin_width=HEIGHT / 60
+        )
+
+        self.clock_label = LabelWithImage(
+            self,
+            left_label_size,
+            left_label_positions[4],
+            'clock.png',
+            time_label,
+            RGBStrings.DARK_BROWN.background_string,
+            left_label_font,
+            RGBStrings.TRANSPARENT.background_string,
+            margin_width=HEIGHT / 60
+        )
+
         # self.label_message = self.make_label(
         #     'Engine Not On',
         #     size=(333, 69),

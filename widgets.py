@@ -3,9 +3,8 @@ import compassWidget2 as CW
 from constants import RGBStrings
 
 
-def make_pixmap(parent, relative_file, size, position=None):
+def make_pixmap(parent, relative_file, position=None):
     pixmap = QtGui.QPixmap(relative_file)
-    pixmap = pixmap.scaled(*size)
     image_logo = QtGui.QLabel(parent)
     image_logo.setPixmap(pixmap)
     if position:

@@ -157,7 +157,7 @@ class HomeWindow(QtGui.QWidget):
             'temperature.png',
             '00.0 C',
             RGBStrings.DARK_BROWN.background_string,
-            QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+            QtGui.QFont('Times', 30, QtGui.QFont.Bold),
             RGBStrings.TRANSPARENT.background_string,
             margin_width=HEIGHT/60
         )

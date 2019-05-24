@@ -87,11 +87,11 @@ def make_label_with_image_background(
     background_label = make_label(
         parent, '', size=size, position=position, alignment=None, style_sheet=background_colour)
 
-    text_background = make_label(parent, '', smaller_size, smaller_position, style_sheet=RGBStrings.WHITE.background_string, font=QtGui.QFont('Times', 20, QtGui.QFont.Bold))
+    text_background = make_label(parent, '', smaller_size, smaller_position, style_sheet=RGBStrings.WHITE.background_string)
 
     image = make_pixmap(parent, image_name, image_size, image_position)
 
     text_label = make_label(
-        parent, text, size=text_size, position=text_position, font=font, style_sheet=text_colour)
+        parent, text, size=text_size, position=text_position, font=font, style_sheet=text_colour, )
 
     return background_label, text_background, image, text_label

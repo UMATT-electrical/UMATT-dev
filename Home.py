@@ -82,15 +82,15 @@ class HomeWindow(QtGui.QWidget):
 
         self.label_title = self.make_label(
             'UMATT P19',
-            size=(WIDTH - 4 * main_menu_item_size, HEIGHT/160),
-            position=(2 * main_menu_item_size, 0),
+            size=(WIDTH - 4 * main_menu_item_size, main_menu_item_size),
+            position=(2 * main_menu_item_size, main_menu_item_size + HEIGHT/80),
             font=QtGui.QFont('Times', 50, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.TRANSPARENT.background_string, RGBStrings.BLACK.colour_string)
         )
 
         self.label_speed = self.make_label(
             '100 Fucking Fast',
-            size=(WIDTH - 4 * main_menu_item_size, main_menu_item_size + HEIGHT/80),
+            size=(WIDTH - 4 * main_menu_item_size, main_menu_item_size),
             position=(2 * main_menu_item_size, 0),
             font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
@@ -107,7 +107,7 @@ class HomeWindow(QtGui.QWidget):
         self.button_difflock = self.make_button(
             'Diff Lock',
             size=(main_menu_item_size, main_menu_item_size),
-            position=(WIDTH - main_menu_item_size - HEIGHT/160, main_menu_item_size + 3 * HEIGHT / 160),
+            position=(WIDTH - main_menu_item_size - HEIGHT/160, main_menu_item_size + HEIGHT/80 + HEIGHT/160),
             font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
@@ -117,7 +117,7 @@ class HomeWindow(QtGui.QWidget):
         self.label_mode = self.make_label(
             'mode',
             size=(main_menu_item_size, main_menu_item_size),
-            position=(WIDTH - main_menu_item_size - HEIGHT/160, 2*(main_menu_item_size + 3 * HEIGHT / 160)),
+            position=(WIDTH - main_menu_item_size - HEIGHT/160, 2*(main_menu_item_size + HEIGHT/80) + HEIGHT/160),
             font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
@@ -125,7 +125,7 @@ class HomeWindow(QtGui.QWidget):
         self.button_menu = self.make_button(
             'Menu',
             size=(main_menu_item_size, main_menu_item_size),
-            position=(WIDTH - main_menu_item_size - HEIGHT/160, 3*(main_menu_item_size + 3 * HEIGHT / 160)),
+            position=(WIDTH - main_menu_item_size - HEIGHT/160, 3*(main_menu_item_size + HEIGHT/80)  + HEIGHT/160),
             font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )

@@ -236,7 +236,15 @@ class HomeWindow(QtGui.QWidget):
 
     def update(self):
         # self.updateDiffDial()
-        self.label_diffspeed.setText('%.2f MPH' % self.parent().parent().value_diffSpeed)
+
+        currentTime = time.ctime().split()[3].split(':')
+        time_label = ('%d:%s PM' % (int(currentTime[0]) - 12, currentTime[1]) if
+                      int(currentTime[0]) > 12 else
+                      '%d:%s AM' % (int(currentTime[0]), currentTime[1]))
+
+        self.diff_rpm_label.text.setText('%.2f MPH' % self.parent().parent().value_diffSpeed)
+
+        self.clock_label.text.setText(time_label)
 
         self.label_gear.setText(self.parent().parent().currentGear)
         '''

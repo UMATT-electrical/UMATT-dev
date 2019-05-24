@@ -25,33 +25,33 @@ class HomeWindow(QtGui.QWidget):
 
         self.grid.setSpacing(0)
 
-        self.dial_gauge_engine_speed = make_compass_widget(
-            'Engine',
-            {0: '3', 45: '4', 90: '5', 135: '6', 225: '0', 270: '1', 315: '2'},
-            (168, 168),
-            225,
-            'background-color: rgba(0,0,0,0%)')
-        self.grid.addWidget(self.dial_gauge_engine_speed, 1, 1, 2, 1)
-
-        self.dialGauge_motorSpeed = CW.CompassWidget()
-        self.dialGauge_motorSpeed.setAngle(225)
-        self.dialGauge_motorSpeed.resize(168, 168)
-        self.dialGauge_motorSpeed._backText = 'Motor'
-        self.dialGauge_motorSpeed._pointText = {0: '3', 45: '4', 90: '5', 135: '6', 225: '0', 270: '1', 315: '2'}
-        # self.dialGauge_motorSpeed.move(67, 274)
-        self.grid.addWidget(self.dialGauge_motorSpeed, 4, 1, 2, 1)
-        self.dialGauge_motorSpeed.setStyleSheet('background-color: rgba(0,0,0,0%)')
-        # self.grid.addWidget(self.dialGauge_motorSpeed, 8,3,1,1)
-
-        self.dialGauge_diffSpeed = CW.CompassWidget()
-        self.dialGauge_diffSpeed.setAngle(225)
-        self.dialGauge_diffSpeed.resize(300, 300)
-        self.dialGauge_diffSpeed._backImage = True
-        self.dialGauge_diffSpeed._pointText = {0: '9', 45: '12', 90: '15', 135: '18', 225: '0', 270: '3', 315: '6'}
-        # self.dialGauge_diffSpeed.move(267, 103)
-        self.grid.addWidget(self.dialGauge_diffSpeed, 2, 3, 3, 1)
-        self.dialGauge_diffSpeed.setStyleSheet('background-color: rgba(0,0,0,0%)')
-        # self.grid.addWidget(self.dialGauge_engineSpeed, 3, 8,2,2)
+        # self.dial_gauge_engine_speed = make_compass_widget(
+        #     'Engine',
+        #     {0: '3', 45: '4', 90: '5', 135: '6', 225: '0', 270: '1', 315: '2'},
+        #     (168, 168),
+        #     225,
+        #     'background-color: rgba(0,0,0,0%)')
+        # self.grid.addWidget(self.dial_gauge_engine_speed, 1, 1, 2, 1)
+        #
+        # self.dialGauge_motorSpeed = CW.CompassWidget()
+        # self.dialGauge_motorSpeed.setAngle(225)
+        # self.dialGauge_motorSpeed.resize(168, 168)
+        # self.dialGauge_motorSpeed._backText = 'Motor'
+        # self.dialGauge_motorSpeed._pointText = {0: '3', 45: '4', 90: '5', 135: '6', 225: '0', 270: '1', 315: '2'}
+        # # self.dialGauge_motorSpeed.move(67, 274)
+        # self.grid.addWidget(self.dialGauge_motorSpeed, 4, 1, 2, 1)
+        # self.dialGauge_motorSpeed.setStyleSheet('background-color: rgba(0,0,0,0%)')
+        # # self.grid.addWidget(self.dialGauge_motorSpeed, 8,3,1,1)
+        #
+        # self.dialGauge_diffSpeed = CW.CompassWidget()
+        # self.dialGauge_diffSpeed.setAngle(225)
+        # self.dialGauge_diffSpeed.resize(300, 300)
+        # self.dialGauge_diffSpeed._backImage = True
+        # self.dialGauge_diffSpeed._pointText = {0: '9', 45: '12', 90: '15', 135: '18', 225: '0', 270: '3', 315: '6'}
+        # # self.dialGauge_diffSpeed.move(267, 103)
+        # self.grid.addWidget(self.dialGauge_diffSpeed, 2, 3, 3, 1)
+        # self.dialGauge_diffSpeed.setStyleSheet('background-color: rgba(0,0,0,0%)')
+        # # self.grid.addWidget(self.dialGauge_engineSpeed, 3, 8,2,2)
 
         '''pixmap = QtGui.QPixmap("UMATT_LOGO_BROWN.jpg")
         pixmap = pixmap.scaled(200,200)
@@ -79,6 +79,7 @@ class HomeWindow(QtGui.QWidget):
         self.label_time = self.make_label(time_label, (167, 69), (0, 0), QtGui.QFont('Times', 14, QtGui.QFont.Bold))
 
         main_menu_item_size = (HEIGHT / 4 * 19) / 20
+
         self.label_gear = self.make_label(
             '',
             size=(main_menu_item_size, main_menu_item_size),
@@ -90,7 +91,7 @@ class HomeWindow(QtGui.QWidget):
         self.button_difflock = self.make_button(
             'Diff Lock',
             size=(main_menu_item_size, main_menu_item_size),
-            position=(WIDTH - main_menu_item_size, main_menu_item_size + HEIGHT/360),
+            position=(WIDTH - main_menu_item_size, main_menu_item_size + HEIGHT/80),
             font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
@@ -100,7 +101,7 @@ class HomeWindow(QtGui.QWidget):
         self.label_mode = self.make_label(
             'mode',
             size=(main_menu_item_size, main_menu_item_size),
-            position=(WIDTH - main_menu_item_size, 2*(main_menu_item_size + HEIGHT/360)),
+            position=(WIDTH - main_menu_item_size, 2*(main_menu_item_size + HEIGHT/80)),
             font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
@@ -108,7 +109,7 @@ class HomeWindow(QtGui.QWidget):
         self.button_menu = self.make_button(
             'Menu',
             size=(main_menu_item_size, main_menu_item_size),
-            position=(WIDTH - main_menu_item_size, 3*(main_menu_item_size + HEIGHT/360)),
+            position=(WIDTH - main_menu_item_size, 3*(main_menu_item_size + HEIGHT/80)),
             font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
@@ -152,7 +153,7 @@ class HomeWindow(QtGui.QWidget):
         self.updateTimer.start(10)
 
     def update(self):
-        self.updateDiffDial()
+        # self.updateDiffDial()
         self.label_diffspeed.setText('%.2f MPH' % self.parent().parent().value_diffSpeed)
 
         self.label_gear.setText(self.parent().parent().currentGear)

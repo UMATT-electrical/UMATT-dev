@@ -244,15 +244,21 @@ class HomeWindow(QtGui.QWidget):
                       int(currentTime[0]) > 12 else
                       '%d:%s AM' % (int(currentTime[0]), currentTime[1]))
 
-        self.diff_rpm_label.text.setText('%.2f MPH' % self.parent().parent().value_diffSpeed)
+        self.temperature_label.text.setText('%s C' % self.parent().parent().value_engineTemperature)
 
-        self.clock_label.text.setText(time_label)
+        self.pressure_label.text.setText("%s PSI" % self.parent().parent().value_engineOilPressure)
+
+        self.voltage_label.text.setText("%s Volts" % self.parent().parent().value_battery)
+
+        # TODO Engine RPM
+        self.diff_rpm_label.text.setText('%.2f RPM' % self.parent().parent().value_diffSpeed)
+
         runtime = self.parent().parent().runtime
-        runtime_hours = math.floor(runtime/60)
+        runtime_hours = int(math.floor(runtime/60))
         runtime_minutes = runtime % 60
         self.time_label.text.setText("%s:%s hours" % (runtime_hours, runtime_minutes))
 
-        self.label_gear.setText(self.parent().parent().currentGear.value)
+        self.clock_label.text.setText(time_label)
 
         if self.parent().parent().warning_gearlockout[0] == 1:
             self.label_title.setText('Return Joystick to Neutral')
@@ -260,6 +266,10 @@ class HomeWindow(QtGui.QWidget):
             self.label_title.setText('Return Joystick to Neutral')
         else:
             self.label_title.setText('UMATT 2019')
+
+        self.label_speed.text.setText("%s KM/H" % self.parent().parent().value_diffSpeed)
+
+        self.label_gear.setText(self.parent().parent().currentGear.value)
 
     def diffLockToggle(self):
         self.ScreenTimer = time.time()

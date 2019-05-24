@@ -80,24 +80,24 @@ class HomeWindow(QtGui.QWidget):
 
         main_menu_item_size = (HEIGHT / 4 * 19) / 20
 
-        self.label_title = LabelWithImage(
+        self.label_title = self.make_label(
+            'UMATT 2019',
+            size=(WIDTH - 4 * main_menu_item_size, main_menu_item_size),
+            position=(2 * main_menu_item_size, HEIGHT/160),
+            font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
+            style_sheet='%s; %s'%(RGBStrings.TRANSPARENT.background_string, RGBStrings.BLACK.colour_string)
+        )
+
+        self.label_speed = LabelWithImage(
             self,
             (WIDTH - 4 * main_menu_item_size, main_menu_item_size),
-            (2 * main_menu_item_size, HEIGHT / 160),
+            (2 * main_menu_item_size, main_menu_item_size + HEIGHT/80 + HEIGHT/160),
             'tractorWireFrame.png',
             '00 KM/H',
             RGBStrings.DARK_BROWN.background_string,
-            QtGui.QFont('Times', 60, QtGui.QFont.Bold),
+            QtGui.QFont('Times', 30, QtGui.QFont.Bold),
             RGBStrings.TRANSPARENT.background_string,
             margin_width=HEIGHT/50
-        )
-
-        self.label_speed = self.make_label(
-            '00 KM/H',
-            size=(WIDTH - 4 * main_menu_item_size, main_menu_item_size),
-            position=(2 * main_menu_item_size, main_menu_item_size + HEIGHT/80 + HEIGHT/160),
-            font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
-            style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
         )
 
         self.label_rpm = self.make_label(

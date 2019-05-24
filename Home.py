@@ -4,7 +4,7 @@ import barWidget as BW
 import time
 import os
 
-from widgets import make_button, make_compass_widget, make_label
+from widgets import make_button, make_compass_widget, make_label, make_label_with_image_background
 
 captureTime = 1
 
@@ -122,40 +122,50 @@ class HomeWindow(QtGui.QWidget):
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
 
-
-        self.label_message = self.make_label(
-            'Engine Not On',
-            size=(333, 69),
-            position=(233, 0),
-            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+        self.temperature_label = make_label_with_image_background(
+            self,
+            (HEIGHT/6-10, WIDTH/4-10),
+            (5, 5),
+            'temperature.png',
+            '00.0 C',
+            RGBStrings.DARK_BROWN.background_string,
+            QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+            RGBStrings.TRANSPARENT.background_string,
         )
+
+        # self.label_message = self.make_label(
+        #     'Engine Not On',
+        #     size=(333, 69),
+        #     position=(233, 0),
+        #     font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+        # )
 
         self.move(0, 0)
         # self.grid.addWidget(self.label_message, 0,4,1,3)
 
-        self.label_diffspeed = self.make_label(
-            '',
-            size=(100, 69),
-            position=(360, 330),
-            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
-            style_sheet='background-color: rgba(0,0,0,0%)'
-        )
-
-        self.label_engineSpeed = self.make_label(
-            '0 RPM',
-            size=(100, 69),
-            position=(85, 185),
-            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
-            style_sheet='background-color: rgba(0,0,0,0%)'
-        )
-
-        self.label_motorSpeed = self.make_label(
-            '0 RPM',
-            size=(100, 69),
-            position=(85, 400),
-            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
-            style_sheet='background-color: rgba(0,0,0,0%)'
-        )
+        # self.label_diffspeed = self.make_label(
+        #     '',
+        #     size=(100, 69),
+        #     position=(360, 330),
+        #     font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+        #     style_sheet='background-color: rgba(0,0,0,0%)'
+        # )
+        #
+        # self.label_engineSpeed = self.make_label(
+        #     '0 RPM',
+        #     size=(100, 69),
+        #     position=(85, 185),
+        #     font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+        #     style_sheet='background-color: rgba(0,0,0,0%)'
+        # )
+        #
+        # self.label_motorSpeed = self.make_label(
+        #     '0 RPM',
+        #     size=(100, 69),
+        #     position=(85, 400),
+        #     font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+        #     style_sheet='background-color: rgba(0,0,0,0%)'
+        # )
 
         self.updateTimer = QtCore.QTimer()
         self.updateTimer.timeout.connect(self.update)

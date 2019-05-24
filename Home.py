@@ -167,6 +167,18 @@ class HomeWindow(QtGui.QWidget):
             margin_width=HEIGHT/60
         )
 
+        self.pressure_label = make_label_with_image_background(
+            self,
+            left_label_size,
+            left_label_positions[1],
+            'pressure.png',
+            '00.0 PSI',
+            RGBStrings.DARK_BROWN.background_string,
+            left_label_font,
+            RGBStrings.TRANSPARENT.background_string,
+            margin_width=HEIGHT/60
+        )
+
         # self.label_message = self.make_label(
         #     'Engine Not On',
         #     size=(333, 69),

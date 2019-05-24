@@ -67,7 +67,7 @@ class MenuWindow(QtGui.QWidget):
         self.button_information.resize(240,69)
         self.button_information.move(30, 240)'''
 
-        #self.button_diagnostics = self.make_button('Diagnostics', size=(240, 69), position=(30, 360))
+        self.button_diagnostics = self.make_button('Diagnostics', size=(240, 69), position=(30, 360))
 
         '''self.updateTimer = QtCore.QTimer()
         self.updateTimer.timeout.connect(self.updateDiffDial)

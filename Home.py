@@ -80,42 +80,6 @@ class HomeWindow(QtGui.QWidget):
 
         main_menu_item_size = (HEIGHT / 4 * 19) / 20
 
-        self.label_title = self.make_label(
-            'UMATT 2019',
-            size=(WIDTH - 4 * main_menu_item_size, main_menu_item_size),
-            position=(2 * main_menu_item_size, HEIGHT/160),
-            font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
-            style_sheet='%s; %s'%(RGBStrings.TRANSPARENT.background_string, RGBStrings.BLACK.colour_string)
-        )
-
-        self.label_speed = LabelWithImage(
-            self,
-            (WIDTH - 4 * main_menu_item_size, main_menu_item_size),
-            (2 * main_menu_item_size, main_menu_item_size + HEIGHT/80 + HEIGHT/160),
-            'tractorWireFrame.png',
-            '00 KM/H',
-            RGBStrings.DARK_BROWN.background_string,
-            QtGui.QFont('Times', 30, QtGui.QFont.Bold),
-            RGBStrings.TRANSPARENT.background_string,
-            margin_width=HEIGHT/50
-        )
-
-        self.label_rpm = self.make_label(
-            '0000 RPM',
-            size=(main_menu_item_size * 3, main_menu_item_size),
-            position=(WIDTH/2 - 3*main_menu_item_size /2, 2*(main_menu_item_size + HEIGHT/80) + HEIGHT/160),
-            font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
-            style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
-        )
-
-        self.label_logo = self.make_label(
-            'wheat umatt',
-            size=(main_menu_item_size, main_menu_item_size),
-            position=(WIDTH / 2 - main_menu_item_size/2, 3*(main_menu_item_size + HEIGHT/80)  + HEIGHT/160),
-            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
-            style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
-        )
-
         self.label_gear = self.make_label(
             '',
             size=(main_menu_item_size, main_menu_item_size),
@@ -227,6 +191,44 @@ class HomeWindow(QtGui.QWidget):
             left_label_font,
             RGBStrings.TRANSPARENT.background_string,
             margin_width=HEIGHT / 60
+        )
+
+        get_center_position = lambda width: int((WIDTH - (left_label_positions[0][0] + left_label_size[0]) - (WIDTH - main_menu_item_size - HEIGHT/160)) - (width/2))
+
+        self.label_title = self.make_label(
+            'UMATT 2019',
+            size=(WIDTH - 4 * main_menu_item_size, main_menu_item_size),
+            position=(get_center_position(WIDTH - 4 * main_menu_item_size), HEIGHT/160),
+            font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
+            style_sheet='%s; %s'%(RGBStrings.TRANSPARENT.background_string, RGBStrings.BLACK.colour_string)
+        )
+
+        self.label_speed = LabelWithImage(
+            self,
+            (WIDTH - 4 * main_menu_item_size, main_menu_item_size),
+            (get_center_position(WIDTH - 4 * main_menu_item_size), main_menu_item_size + HEIGHT/80 + HEIGHT/160),
+            'tractorWireFrame.png',
+            '00 KM/H',
+            RGBStrings.DARK_BROWN.background_string,
+            QtGui.QFont('Times', 30, QtGui.QFont.Bold),
+            RGBStrings.TRANSPARENT.background_string,
+            margin_width=HEIGHT/50
+        )
+
+        self.label_rpm = self.make_label(
+            '0000 RPM',
+            size=(main_menu_item_size * 3, main_menu_item_size),
+            position=(get_center_position(main_menu_item_size * 3), 2*(main_menu_item_size + HEIGHT/80) + HEIGHT/160),
+            font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
+            style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
+        )
+
+        self.label_logo = self.make_label(
+            'wheat umatt',
+            size=(main_menu_item_size, main_menu_item_size),
+            position=(get_center_position(main_menu_item_size), 3*(main_menu_item_size + HEIGHT/80)  + HEIGHT/160),
+            font=QtGui.QFont('Times', 14, QtGui.QFont.Bold),
+            style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
 
         # self.label_message = self.make_label(

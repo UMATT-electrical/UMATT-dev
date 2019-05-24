@@ -246,27 +246,14 @@ class HomeWindow(QtGui.QWidget):
 
         self.clock_label.text.setText(time_label)
 
-        self.label_gear.setText(self.parent().parent().currentGear)
-        '''
-        currentTime = time.ctime().split()[3].split(':')
-        if int(currentTime[0])>12:
-            self.label_time.setText('%d:%s PM'%(int(currentTime[0])-12,currentTime[1]))
-        else:
-            self.label_time.setText('%d:%s AM'%(int(currentTime[0]),currentTime[1]))'''
-
-        if self.parent().parent().value_modeManeuverability == 1:
-            self.label_mode.setText('Mode: Maneuverability')
-        elif self.parent().parent().value_modePull == 1:
-            self.label_mode.setText('Mode: Pulling')
-        else:
-            self.label_mode.setText('Error: Unknown Mode')
+        self.label_gear.setText(self.parent().parent().currentGear.value)
 
         if self.parent().parent().warning_gearlockout[0] == 1:
-            self.label_message.setText('Return Joystick to Neutral')
+            self.label_title.setText('Return Joystick to Neutral')
         elif self.parent().parent().warning_gearlockout[1] == 1:
-            self.label_message.setText('Return Joystick to Neutral')
+            self.label_title.setText('Return Joystick to Neutral')
         else:
-            self.label_message.setText('UMATT Pullers')
+            self.label_title.setText('UMATT 2019')
 
     def diffLockToggle(self):
         self.ScreenTimer = time.time()

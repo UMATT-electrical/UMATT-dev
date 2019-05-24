@@ -81,19 +81,23 @@ class HomeWindow(QtGui.QWidget):
         main_menu_item_size = (HEIGHT / 4 * 19) / 20
 
         self.label_title = self.make_label(
-            'UMATT P19',
+            'UMATT 2019',
             size=(WIDTH - 4 * main_menu_item_size, main_menu_item_size),
             position=(2 * main_menu_item_size, HEIGHT/160),
             font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.TRANSPARENT.background_string, RGBStrings.BLACK.colour_string)
         )
 
-        self.label_speed = self.make_label(
-            '100 Fucking Fast',
-            size=(WIDTH - 4 * main_menu_item_size, main_menu_item_size),
-            position=(2 * main_menu_item_size, main_menu_item_size + HEIGHT/80 + HEIGHT/160),
-            font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
-            style_sheet='%s; %s'%(RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
+        self.label_speed = LabelWithImage(
+            self,
+            (WIDTH - 4 * main_menu_item_size, main_menu_item_size),
+            (2 * main_menu_item_size, main_menu_item_size + HEIGHT/80 + HEIGHT/160),
+            'tractorWireFrame.png',
+            '00 KM/H',
+            RGBStrings.DARK_BROWN.background_string,
+            QtGui.QFont('Times', 30, QtGui.QFont.Bold),
+            RGBStrings.TRANSPARENT.background_string,
+            margin_width=HEIGHT/50
         )
 
         self.label_rpm = self.make_label(
@@ -145,10 +149,12 @@ class HomeWindow(QtGui.QWidget):
         )
 
         left_label_font = QtGui.QFont('Times', 30, QtGui.QFont.Bold)
-        left_label_size = (WIDTH / 4 - 10, HEIGHT / 6 - 10)
-        left_label_offsets = (HEIGHT / 7 - left_label_size[0]) / 2
+        total_height = HEIGHT/6
+        box_height = int(HEIGHT / 6 *.95)
+        spacing = total_height - box_height
+        left_label_size = (WIDTH / 4 - 10, box_height)
         left_label_positions = [
-            (left_label_offsets, (idx * left_label_size[0]) + left_label_offsets * (idx + 1)) for idx in range(7)
+            (spacing, (idx * left_label_size[1]) + spacing * (idx + .5)) for idx in range(7)
         ]
 
         self.temperature_label = LabelWithImage(

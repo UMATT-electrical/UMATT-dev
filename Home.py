@@ -224,7 +224,7 @@ class HomeWindow(QtGui.QWidget):
         )
 
         self.label_logo = make_pixmap(
-            self, 'uofm_logo.png',
+            self, 'wheat.png',
             size=(main_menu_item_size, main_menu_item_size),
             position=(get_center_position(main_menu_item_size), 3*(main_menu_item_size + HEIGHT/80) + HEIGHT/160)
         )

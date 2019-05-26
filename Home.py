@@ -203,7 +203,7 @@ class HomeWindow(QtGui.QWidget):
             'UMATT 2019',
             size=(WIDTH - 4 * main_menu_item_size, main_menu_item_size),
             position=(get_center_position(WIDTH - 4 * main_menu_item_size), HEIGHT/160),
-            font=QtGui.QFont('Times', 50, QtGui.QFont.Bold),
+            font=QtGui.QFont('Times', 35, QtGui.QFont.Bold),
             style_sheet='%s; %s' % (RGBStrings.TRANSPARENT.background_string, RGBStrings.BLACK.colour_string)
         )
 

@@ -84,7 +84,7 @@ class LabelWithImage:
         smaller_size = (size[0]-2*margin_width, size[1]-2*margin_width)
         smaller_position = (position[0]+margin_width, position[1]+margin_width)
 
-        image_size = (size[1]*.8, size[1]*.8)
+        image_size = (size[1]*.75, size[1]*.75)
         image_position = (smaller_position[0]*1.1, position[1]+(.5*size[1])-(.5*image_size[1]))
 
         text_size = (size[0]*.7, size[1]*.8)

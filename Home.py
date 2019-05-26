@@ -87,7 +87,7 @@ class HomeWindow(QtGui.QWidget):
             '',
             size=(main_menu_item_size, main_menu_item_size),
             position=(WIDTH - main_menu_item_size - HEIGHT/160, HEIGHT/160),
-            font=QtGui.QFont('Times', 70, QtGui.QFont.Bold),
+            font=QtGui.QFont('Times', 50, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
 
@@ -95,7 +95,7 @@ class HomeWindow(QtGui.QWidget):
             'Diff Lock',
             size=(main_menu_item_size, main_menu_item_size),
             position=(WIDTH - main_menu_item_size - HEIGHT/160, main_menu_item_size + HEIGHT/80 + HEIGHT/160),
-            font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
+                font=QtGui.QFont('Times', 16, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string),
             # image='DiffLock.png'
         )
@@ -104,7 +104,7 @@ class HomeWindow(QtGui.QWidget):
             'Pull',
             size=(main_menu_item_size, main_menu_item_size),
             position=(WIDTH - main_menu_item_size - HEIGHT/160, 2*(main_menu_item_size + HEIGHT/80) + HEIGHT/160),
-            font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
+            font=QtGui.QFont('Times', 16, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
 
@@ -112,11 +112,11 @@ class HomeWindow(QtGui.QWidget):
             'Menu',
             size=(main_menu_item_size, main_menu_item_size),
             position=(WIDTH - main_menu_item_size - HEIGHT/160, 3*(main_menu_item_size + HEIGHT/80)  + HEIGHT/160),
-            font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
+            font=QtGui.QFont('Times', 16, QtGui.QFont.Bold),
             style_sheet='%s; %s'%(RGBStrings.DARK_BROWN.background_string, RGBStrings.GOLD.colour_string)
         )
 
-        left_label_font = QtGui.QFont('Times', 30, QtGui.QFont.Bold)
+        left_label_font = QtGui.QFont('Times', 16, QtGui.QFont.Bold)
         total_height = HEIGHT/6
         box_height = int(HEIGHT / 6 *.95)
         spacing = total_height - box_height
@@ -203,7 +203,7 @@ class HomeWindow(QtGui.QWidget):
             'UMATT 2019',
             size=(WIDTH - 4 * main_menu_item_size, main_menu_item_size),
             position=(get_center_position(WIDTH - 4 * main_menu_item_size), HEIGHT/160),
-            font=QtGui.QFont('Times', 60, QtGui.QFont.Bold),
+            font=QtGui.QFont('Times', 50, QtGui.QFont.Bold),
             style_sheet='%s; %s' % (RGBStrings.TRANSPARENT.background_string, RGBStrings.BLACK.colour_string)
         )
 
@@ -214,7 +214,7 @@ class HomeWindow(QtGui.QWidget):
             'tractorWireFrame.png',
             '00 KM/H',
             RGBStrings.DARK_BROWN.background_string,
-            QtGui.QFont('Times', 30, QtGui.QFont.Bold),
+            QtGui.QFont('Times', 15, QtGui.QFont.Bold),
             RGBStrings.TRANSPARENT.background_string,
             margin_width=HEIGHT/50
         )
@@ -223,7 +223,7 @@ class HomeWindow(QtGui.QWidget):
             '0000 RPM',
             size=(main_menu_item_size * 3, main_menu_item_size),
             position=(get_center_position(main_menu_item_size * 3), 2*(main_menu_item_size + HEIGHT/80) + HEIGHT/160),
-            font=QtGui.QFont('Times', 30, QtGui.QFont.Bold),
+            font=QtGui.QFont('Times', 15, QtGui.QFont.Bold),
             style_sheet='%s; %s' % (RGBStrings.GOLD.background_string, RGBStrings.BLACK.colour_string)
         )
 

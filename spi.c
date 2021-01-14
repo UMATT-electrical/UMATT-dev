@@ -1,4 +1,16 @@
-﻿void writeSPI(unsigned char CS, struct Message data){
+struct Message {
+   unsigned long word;
+   unsigned char length;
+};//Message
+
+struct Message msgMkr(unsigned long data, unsigned char size){
+    struct Message msg;
+    msg.word = data;
+    msg.length = size;
+    return msg;
+}//msgMkr
+
+void writeSPI(unsigned char CS, struct Message data){
     digitalWrite(CS, LOW);
     for (int i=0; i<data.length; i++){
         digitalWrite(MOSI,getBit(i,data.word))
@@ -13,7 +25,7 @@
 }//writeSPI
 
 unsigned char getBit(unsigned char idx, unsigned char data){
-    return (data & (1 << idx)) >> idx
+    return (data & (1 << idx)) >> idx;
 }//getBit
 
 unsigned char readSPI(unsigned char CS){
@@ -27,5 +39,5 @@ unsigned char readSPI(unsigned char CS){
         //add sleep function for 0.005 seconds
     }
     digitalWrite(CS, HIGH);
-    return data
+    return data;
 }//readSPI

@@ -1,4 +1,4 @@
-﻿#define MOSI 12         //10
+#define MOSI 12         //10
 #define MISO 13         //11
 #define CLK  14         //12
 #define ADC_CS 21       //15

@@ -1,15 +1,3 @@
-﻿struct Message {
-   unsigned long word
-   unsigned char length 
-}//Message
-
-struct Message msgMkr(unsigned long data, unsigned char size){
-    struct Message msg;
-    msg.word = data;
-    msg.length = size;
-    return msg
-}//msgMkr
-
 void initGPIO(unsigned char CS){
     /*Assigns register A as all input and register B as all output
       Verify this is acceptable for all GPIOs on the board*/
@@ -22,10 +10,11 @@ void initGPIO(unsigned char CS){
 }//initGPIO
 
 void writeGPIO(unsigned char CS, unsigned char register, unsigned char byte){
-    unsigned long word = (GPIO_OPCODE_WRITE<<16)+(register<<8)+byte; 
+    unsigned long word = (GPIO_OPCODE_WRITE<<16)+(register<<8)+byte;
     struct Message message = msgMkr(word,24);
     writeSPI(CS,message);
 }//writeGPIO
+
 
 unsigned char readGPIO(unsigned char CS, unsigned char register){
     unsigned char data;
@@ -34,4 +23,5 @@ unsigned char readGPIO(unsigned char CS, unsigned char register){
     writeSPI(CS, message);
     return readSPI(CS);
 }//readGPIO
+
 

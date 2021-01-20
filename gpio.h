@@ -1,3 +1,6 @@
+#ifndef GPIO_H_
+#define GPIO_H_
+
 #define LOW                     0
 #define HIGH                    1
 #define GPIO_OPCODE_WRITE       0b01000000
@@ -15,3 +18,5 @@
 void initGPIO(unsigned char CS);
 void writeGPIO(unsigned char CS, unsigned char register, unsigned char byte);
 unsigned char readGPIO(unsigned char CS, unsigned char register);
+
+#endif

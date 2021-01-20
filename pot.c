@@ -14,7 +14,7 @@ unsigned char getMax (unsigned char xx, unsigned char yy){
     if (xx > yy){
         max = xx;
     }
-    return max
+    return max;
 }//getMax
 
 unsigned char getMin(unsigned char xx, unsigned char yy){
@@ -22,5 +22,5 @@ unsigned char getMin(unsigned char xx, unsigned char yy){
     if (xx < yy){
         min = xx;
     }
-    return min
-}getMin
+    return min;
+}//getMin

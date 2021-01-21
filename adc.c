@@ -1,29 +1,21 @@
 /**
  * ADC_C
  * @author K Gledson
- * @version 2021-01-20
- *
+ * @version 2021-01-21
+ * Functions needed to communicate with the Analog to Digital Converter (ADC)
  */
 
-unsigned char readADC(unsigned char channel){
-	/*	reads the specified ADC channel
-	 * 	returns the ADC data
-	 */
-    struct Message message = msgMkr(channel, 6); 	//ADC requires leading zeros
-    writeSPI(ADC_CS, message);						//Request transmission from ADC
-    return ADCreader(ADC_CS);						//Return ADC transmission
-}//readGPIO
+///////////////////////////////////////////////////////////////////////////////////////// included files (get rid of these later)
+#include "stdint.h" //library not found on my computer.
+#include "adc.h"
+#include "definitions.h"
+///////////////////////////////////////////////////////////////////////////////////////// functions
 
-unsigned char ADCreader(void){
-    unsigned char data;							//Data from transmission
-    digitalWrite(ADC_CS, LOW);					//Select ADC chip
-    for (int i=0; i<RESOLUTION; i++){			//Begin SPI communication
-         digitalWrite(CLK,HIGH);				//Set clock high
-         //add sleep function for 0.005 seconds
-        data = data<<1 + digitalRead(MISO);		//Append new bit to data
-        digitalWrite(CLK,LOW);					//Set clock low
-        //add sleep function for 0.005 seconds
-    }
-    digitalWrite(ADC_CS, HIGH);					//Deselect ADC chip
-    return data;
-}//ADCreader
+uint16_t readADC(uint8_t channel){
+	/* reads and returns the data from the ADC channel
+	 * @param channel	the ADC channel to read
+	 */
+    struct Message message = msgMkr(channel, OPCODE_SIZE+1); 	//ADC requires leading zero for transmission
+    writeSPI(ADC_CS, message);									//Request transmission from ADC
+    return readSPI(ADC_CS,RESOLUTION);							//Return ADC transmission
+}//readGPIO

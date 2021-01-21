@@ -10,8 +10,8 @@
 #define ADC_CH6 	0b1110
 #define ADC_CH7 	0b1111
 #define RESOLUTION	12
+#define OPCODE_SIZE	5
 
-unsigned char readADC(unsigned char channel);
-unsigned char ADCreader(void);
+uint16_t readADC(uint8_t channel);
 
 #endif

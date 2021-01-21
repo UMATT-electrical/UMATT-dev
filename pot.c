@@ -1,26 +1,44 @@
-void writePot(unsigned char value){
-    unsigned long word = (POT_OPCODE_WRITE<<12)+(POT_SELECT_0<<8)+value;
-    struct Message message = msgMkr(word,16);
+/**
+ * POT_C
+ * @author K Gledson
+ * @version 2021-01-21
+ * Functions needed to communicate with the Digital Potentiometer (POT) chips
+ */
+
+///////////////////////////////////////////////////////////////////////////////////////// included files (get rid of these later)
+#include "stdint.h" //library not found on my computer.
+#include "pot.h"
+#include "definitions.h"
+///////////////////////////////////////////////////////////////////////////////////////// functions
+void writePot(uint8_t value){
+	/* Writes data to the potentiometer
+	 * @param value	new data for the potentiometer
+	 */
+    uint16_t operation = (POT_OPCODE_WRITE<<12)+(POT_SELECT_0<<8)+value;
+    struct Message message = msgMkr(operation,16);
     writeSPI(POT_CS,message);
 }//writePot
 
-void setPot(unsigned char value){
-    value = getMax(0, getMin(1,1-value)); //idk why this is a thing
+void setPot(uint8_t value){
+	/* Changes the voltage output of the potentiometer
+	 * @param value	determines the voltage to set the potentiometer
+	 */
+    value = getMax(0, getMin(1,1-value)); //get normalized voltage (idk why this is how it's determined)
     writePot(value);
 }
 
-unsigned char getMax (unsigned char xx, unsigned char yy){
-    unsigned char max = yy;
-    if (xx > yy){
-        max = xx;
-    }
+uint8_t getMax (uint8_t value1, uint8_t value2){
+    uint8_t max = value2;
+    if (value1 > value2){
+        max = value1;
+    }//if
     return max;
 }//getMax
 
-unsigned char getMin(unsigned char xx, unsigned char yy){
-    unsigned char min = yy;
-    if (xx < yy){
-        min = xx;
-    }
-    return min;
+uint8_t getMin(uint8_t value1, uint8_t value2){
+	uint8_t min = value2;
+	if (value1 < value2){
+		min = value1;
+	}//if
+	return min;
 }//getMin

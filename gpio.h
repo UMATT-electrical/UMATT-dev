@@ -14,7 +14,11 @@
 #define GPPUA_ENABLE_ALL        0b11111111
 #define BANK_SIZE				8
 
-void initGPIO(uint8_t CS);
+void initGPIO(void);
+void initGPIO1(void);
+void initGPIO2(void);
+void initGPIO3(void);
+void initGPIO4(void);
 void writeGPIO(uint8_t CS, uint16_t bank, uint8_t byte);
 uint16_t readGPIO(uint8_t CS, uint16_t bank);
 

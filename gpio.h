@@ -8,6 +8,7 @@
 #define GPIO_SELECT_PORTA		0x12
 #define GPIO_SELECT_PORTB		0x13
 #define GPIO_SELECT_GPPUA       0x0C
+#define GPIO_SELECT_IOCON		0x0A
 #define GPIO_INIT_DELAY			10
 #define ALL_OUTPUT				0b00000000
 #define ALL_INPUT				0b11111111
@@ -19,6 +20,7 @@ void initGPIO1(void);
 void initGPIO2(void);
 void initGPIO3(void);
 void initGPIO4(void);
+void initIOCON(uint8_t CS);
 void writeGPIO(uint8_t CS, uint16_t bank, uint8_t byte);
 uint16_t readGPIO(uint8_t CS, uint16_t bank);
 

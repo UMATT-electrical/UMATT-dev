@@ -17,11 +17,18 @@ void initGPIO(void){
 	initGPIO4();
 }//initGPIO
 
+void initIOCON(uint8_t CS){
+	uint32_t config = (GPIO_OPCODE_WRITE<<16)+(GPIO_SELECT_IOCON<<8)+ALL_OUTPUT;		//ensure IOCON register is configured correctly
+	struct Message configMsg = msgMkr(config,24);
+	writeSPI(CS, configMsg);
+}
+
 void initGPIO1(void){
 	uint32_t portA = (GPIO_OPCODE_WRITE<<16)+(GPIO_SELECT_DIRA<<8)+ALL_INPUT;			//opcode to make A0-7 inputs
 	uint32_t portB = (GPIO_OPCODE_WRITE<<16)+(GPIO_SELECT_DIRB<<8)+ALL_OUTPUT;			//opcode to make B0-7 outputs
 	struct Message messageA = msgMkr(portA,24);											//assign all input message for SPI
 	struct Message messageB = msgMkr(portB,24);											//assign all output message for SPI
+	initIOCON(GPIO1_CS);
 	writeSPI(GPIO1_CS,messageA);                                                        //Write Port A configuration over SPI
 	writeSPI(GPIO1_CS,messageB);                                                        //Write Port B configuration over SPI
 }
@@ -31,6 +38,7 @@ void initGPIO2(void){
 	uint32_t portB = (GPIO_OPCODE_WRITE<<16)+(GPIO_SELECT_DIRB<<8)+ALL_INPUT			//opcode to make B0-7 inputs
 	struct Message messageA = msgMkr(portA,24);											//assign all input message for SPI
 	struct Message messageB = msgMkr(portB,24);											//assign all output message for SPI
+	initIOCON(GPIO2_CS);
 	writeSPI(GPIO2_CS,messageA);                                                        //Write Port A configuration over SPI
 	writeSPI(GPIO2_CS,messageB);                                                        //Write Port B configuration over SPI
 }
@@ -38,6 +46,7 @@ void initGPIO2(void){
 void initGPIO3(void){
 	uint32_t portB = (GPIO_OPCODE_WRITE<<16)+(GPIO_SELECT_DIRB<<8)+ALL_INPUT			//opcode to make B0-7 input
 	struct Message messageB = msgMkr(portB,24);											//assign all input message for SPI
+	initIOCON(GPIO3_CS);
 	writeSPI(GPIO3_CS,messageB);                                                        //Write Port B configuration over SPI
 }
 
@@ -46,6 +55,7 @@ void initGPIO4(void){
 	uint32_t portB = (GPIO_OPCODE_WRITE<<16)+(GPIO_SELECT_DIRB<<8)+ALL_INPUT			//B0-7 all inputs
 	struct Message messageA = msgMkr(portA,24);
 	struct Message messageB = msgMkr(portB,24);
+	initIOCON(GPIO4_CS);
 	writeSPI(GPIO4_CS,messageA);                                                        //Write Port A configuration over SPI
 	writeSPI(GPIO4_CS,messageB);                                                        //Write Port B configuration over SPI
 }

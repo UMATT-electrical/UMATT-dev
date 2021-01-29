@@ -45,10 +45,7 @@ void initXPNDR(void){
     //Sets the direction for all ICs on the expansion board
     initPin();
     initState();
-    initGPIO(GPIO1_CS);
-    initGPIO(GPIO2_CS);
-    initGPIO(GPIO3_CS);
-    initGPIO(GPIO4_CS);
+    initGPIO();
 }//initXPNDR
 
 void initPot(void){

@@ -5,25 +5,23 @@
  * Functions needed to initialize the Raspberry Pi header, auxiliary board ICs and SPI communication
  */
 
-///////////////////////////////////////////////////////////////////////////////////////// included files (get rid of these later)
-#include "stdint.h" 		//library not found on my computer.
-#include "definitions.h"
-///////////////////////////////////////////////////////////////////////////////////////// functions
+#include "init.h"
+
  void initPin(void){
     //Sets direction of header pins
 
 	 	 	 	 	 	 	 	//SPI pins
-	pinmode(MOSI,OUTPUT);       //Data output pin
-    pinmode(MISO,INPUT);        //Data input pin
-    pinmode(CLK,OUTPUT);        //SPI clock
+	pinMode(MOSI,OUTPUT);       //Data output pin
+    pinMode(MISO,INPUT);        //Data input pin
+    pinMode(CLK,OUTPUT);        //SPI clock
 
     							//Auxiliary board ICs
-    pinmode(GPIO1_CS, OUTPUT);  //GPIO expander 1 chip select
-    pinmode(GPIO2_CS, OUTPUT);  //GPIO expander 2 chip select
-    pinmode(GPIO3_CS, OUTPUT);  //GPIO expander 3 chip select
-    pinmode(GPIO4_CS, OUTPUT);  //GPIO expander 4 chip select
-    pinmode(ADC_CS, OUTPUT);    //Analog to digital (ADC) converter chip select
-    pinmode(POT_CS, OUTPUT);    //Digital potentiometer chip select
+    pinMode(GPIO1_CS, OUTPUT);  //GPIO expander 1 chip select
+    pinMode(GPIO2_CS, OUTPUT);  //GPIO expander 2 chip select
+    pinMode(GPIO3_CS, OUTPUT);  //GPIO expander 3 chip select
+    pinMode(GPIO4_CS, OUTPUT);  //GPIO expander 4 chip select
+    pinMode(ADC_CS, OUTPUT);    //Analog to digital (ADC) converter chip select
+    pinMode(POT_CS, OUTPUT);    //Digital potentiometer chip select
 
 }//initPin
 

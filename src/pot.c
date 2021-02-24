@@ -5,17 +5,14 @@
  * Functions needed to communicate with the Digital Potentiometer (POT) chips
  */
 
-///////////////////////////////////////////////////////////////////////////////////////// included files (get rid of these later)
-#include "stdint.h" //library not found on my computer.
 #include "pot.h"
-#include "definitions.h"
-///////////////////////////////////////////////////////////////////////////////////////// functions
+
 void writePot(uint8_t value){
 	/* Writes data to the potentiometer
 	 * @param value	new data for the potentiometer
 	 */
     uint16_t operation = (POT_OPCODE_WRITE<<12)+(POT_SELECT_0<<8)+value;
-    struct Message message = msgMkr(operation,16);
+    message_32b message = msgMkr(operation,16);
     writeSPI(POT_CS,message);
 }//writePot
 

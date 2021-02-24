@@ -1,5 +1,9 @@
-#ifndef POT_H_
-#define POT_H
+#ifndef UMATT_POT_H_
+#define UMATT_POT_H
+
+#include <stdint.h>
+#include "definitions.h"
+#include "spi.h"
 
 #define POT_OPCODE_WRITE    0b0001
 #define POT_OPCODE_OFF      0b0010

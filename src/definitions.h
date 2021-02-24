@@ -1,14 +1,20 @@
-#ifndef DEFINITIONS_H_
-#define DEFINITIONS_H_
+#ifndef UMATT_DEFINITIONS_H_
+#define UMATT_DEFINITIONS_H_
 
-#define TRUE		1
-#define FALSE		0
+//Just in case they're not defined yet
+#ifndef	TRUE
+#  define	TRUE	(1==1)
+#  define	FALSE	(!TRUE)
+#endif
 
 #define LOW         0
 #define HIGH        1
 
-#define OUTPUT		0 		//Verify this is right
-#define INPUT		1
+//FIXME: Currently redefining the I/O from wiringPi.h incorrectly..
+#ifndef OUTPUT
+#	define OUTPUT		0 		//Verify this is right
+#	define INPUT		1
+#endif
 							//Header pin assignments
 #define MOSI 		12		//10
 #define MISO 		13     	//11

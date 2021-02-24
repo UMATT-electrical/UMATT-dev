@@ -4,26 +4,16 @@
  * @version 2021-01-21
  * Functions needed for Serial Peripheral Interface (SPI) communication
  */
-
-///////////////////////////////////////////////////////////////////////////////////////// included files (get rid of these later)
-#include "stdint.h" //library not found on my computer.
 #include "spi.h"
-#include "definitions.h"
-///////////////////////////////////////////////////////////////////////////////////////// functions
 
-struct Message {
-   uint32_t operation; 	//message to be sent over SPI
-   uint8_t 	length;		//message length
-};//Message
-
-struct Message msgMkr(uint32_t data, uint8_t size){
-    struct Message msg;
+message_32b msgMkr(uint32_t data, uint8_t size){
+    message_32b msg;
     msg.operation = data;
     msg.length = size;
     return msg;
 }//msgMkr
 
-void writeSPI(uint8_t CS, struct Message data){
+void writeSPI(uint8_t CS, struct Message_32b data){
     digitalWrite(CS, LOW);
     for (int i=0; i<data.length; i++){
         digitalWrite(MOSI,getBit(i,data.operation));

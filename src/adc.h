@@ -1,5 +1,9 @@
-#ifndef ADC_H
-#define ADC_H
+#ifndef UMATT_ADC_H
+#define UMATT_ADC_H
+
+#include <stdint.h>
+#include "definitions.h"
+#include "spi.h"
 
 #define ADC_CH0 	0b1000
 #define ADC_CH1 	0b1001

@@ -1,5 +1,13 @@
-#ifndef INIT_H_
-#define INIT_H_
+#ifndef UMATT_INIT_H_
+#define UMATT_INIT_H_
+
+#include <stdint.h>
+#include <wiringPi.h>
+
+#include "definitions.h"
+#include "GPIOdefinitions.h"
+#include "gpio.h"
+#include "pot.h"
 
 void initPin(void);
 void initState(void);

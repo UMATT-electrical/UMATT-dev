@@ -1,5 +1,10 @@
-#ifndef GPIO_H_
-#define GPIO_H_
+#ifndef UMATT_GPIO_H_
+#define UMATT_GPIO_H_
+
+#include <stdint.h>
+#include "definitions.h"
+#include "GPIOdefinitions.h"
+#include "spi.h"
 
 #define GPIO_OPCODE_WRITE       0b01000000
 #define GPIO_OPCODE_READ        0b01000001
@@ -22,6 +27,6 @@ void initGPIO3(void);
 void initGPIO4(void);
 void initIOCON(uint8_t CS);
 void writeGPIO(uint8_t CS, uint16_t bank, uint8_t byte);
-uint16_t readGPIO(uint8_t CS, uint16_t bank);
+uint16_t readGPIO(uint8_t CS, uint8_t bank);
 
 #endif

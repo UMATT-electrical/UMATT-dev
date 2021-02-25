@@ -5,7 +5,6 @@
 #include <wiringPi.h>
 
 #include "definitions.h"
-#include "GPIOdefinitions.h"
 #include "gpio.h"
 #include "pot.h"
 

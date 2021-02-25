@@ -37,8 +37,10 @@ uint16_t readSPI(uint8_t CS, uint8_t length){
     for (int i=0; i<length; i++){
          digitalWrite(CLK,HIGH);
          //add sleep function for 0.005 seconds
+        for(int t=0; t<1000000; t++){}
         data = data<<1 + digitalRead(MISO);
         digitalWrite(CLK,LOW);
+        for(int t=0; t<1000000; t++){}
         //add sleep function for 0.005 seconds
     }
     digitalWrite(CS, HIGH);

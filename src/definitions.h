@@ -23,7 +23,7 @@
 #define GPIO2_CS	22     	//16
 #define GPIO3_CS	23     	//17
 #define POT_CS		24     	//18
-#define GPIO1_CS	27     	//23
+#define GPIO1_CS	10 //27     	//23
 #define GPIO4_CS	26     	//25
 
 #endif

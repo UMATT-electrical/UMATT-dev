@@ -3,7 +3,6 @@
 
 #include <stdint.h>
 #include "definitions.h"
-#include "GPIOdefinitions.h"
 #include "spi.h"
 
 #define GPIO_OPCODE_WRITE       0b01000000

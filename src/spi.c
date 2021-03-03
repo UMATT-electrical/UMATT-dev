@@ -6,6 +6,17 @@
  */
 #include "spi.h"
 
+#include <unistd.h>
+#include <stdio.h>
+
+void logBinary(uint32_t data) {
+    for(int i=31; -1<i; i--) {
+        printf("%d", getBit(i, data));
+        if(i%8==0)
+            printf("  ");
+    }
+}
+
 message_32b msgMkr(uint32_t data, uint8_t size){
     message_32b msg;
     msg.operation = data;
@@ -15,13 +26,23 @@ message_32b msgMkr(uint32_t data, uint8_t size){
 
 void writeSPI(uint8_t CS, struct Message_32b data){
     digitalWrite(CS, LOW);
-    for (int i=0; i<data.length; i++){
+    printf("\tsending:            ");
+    //MCP23s17 needs MSB->LSB (spec: figure 1-5)
+    //for (int i=0; i<data.length; i++){
+    for (int i=data.length-1; -1<i; i--){
+        for(int t=0; t<500000; t++){}
         digitalWrite(MOSI,getBit(i,data.operation));
+        printf("%d", getBit(i,data.operation));
+        if((i)%8==0)
+            printf("  ");
+        //add sleep function for 0.005 seconds
+        for(int t=0; t<500000; t++){}
         digitalWrite(CLK,HIGH);
         //add sleep function for 0.005 seconds
+        for(int t=0; t<500000; t++){}
         digitalWrite(CLK,LOW);
-        //add sleep function for 0.005 seconds
     }
+    printf("\n");
     digitalWrite(MOSI, LOW);
     digitalWrite(CS, HIGH);
     //add sleep function for 0.005 seconds

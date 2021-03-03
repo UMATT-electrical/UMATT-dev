@@ -42,23 +42,36 @@ void testPins(void){
 	 * Best used with LEDs attached to the pins
 	 */
 	printf("Testing Pins\n");
-	uint8_t pins[] = {MOSI, MISO, CLK, GPIO1_CS};//, ADC_CS, GPIO2_CS, GPIO3_CS, POT_CS, GPIO4_CS};
+	uint8_t pins[] = {MISO, MOSI, CLK, GPIO1_CS};//, ADC_CS, GPIO2_CS, GPIO3_CS, POT_CS, GPIO4_CS};
 	allOutput(pins, 4);																				//Set all pins as outputs
 	blink(pins, 4);																					//Turn pins on and off
 	printf("Finished test\n");
 }//testCS
 
 void blinkBank(uint8_t CS, uint16_t bank){
-	uint8_t pin = 0b00000001;
+	//Need to set all these as outputs...
+	uint8_t pins[] = {MISO, MOSI, CLK, GPIO1_CS};
+	allOutput(pins, 4);
+	uint8_t pin;
 	uint8_t clear = 0;
 	printf("Begin the looping\n");
-	for (uint8_t j = 0; j<100; j++)
+	for (uint8_t j = 0; j<100; j++) {
+		pin = 1;
 		for (uint8_t i = 0; i<8; i++){
-			printf("doing da blinks %d\n", i);
+			printf("doing da blinks %d\n\tpin=%u\n", i, pin);
 			writeGPIO(CS, bank, pin);
 			sleep(1);
 			writeGPIO(CS, bank, clear);
 			pin = pin << 1;
+			sleep(1);
+		}
+	}
+}
+
+void countdown(char *str, int length) {
+		for( int i=length; i>0; i--) {
+			printf("%s%d\n", str, i);
+			sleep(1);
 		}
 }
 
@@ -69,7 +82,7 @@ int main(int argc, char** argv){
 	printf("\n\n\n\n\nBegin init\n");
 	initBoard();							//set pins to the drive.c configuration
 	printf("Init finished\n");
-	
+	//countdown("Starting in: ", 5);
 	//testPins();								//verify the pinout is correct by turning each pin on then off
 	
 	blinkBank(GPIO1_CS,GPIO_SELECT_PORTB);	//turns each pin on GPIO1 bank B on then off

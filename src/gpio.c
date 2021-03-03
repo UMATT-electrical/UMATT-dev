@@ -6,6 +6,7 @@
  */
 
 #include "gpio.h"
+#include <stdio.h>
 
 void initGPIO(void){
     /* Initializes the GPIOs over SPI.     */
@@ -21,8 +22,8 @@ void initIOCON(uint8_t CS){
 	writeSPI(CS, configMsg);
 }
 
-void initGPIO1(void){
-	uint32_t portA = (GPIO_OPCODE_WRITE<<16)+(GPIO_SELECT_DIRA<<8)+ALL_INPUT;			//opcode to make A0-7 inputs
+void initGPIO1(void){//FIXME: Changed dir a to all be output rather than output for testing
+	uint32_t portA = (GPIO_OPCODE_WRITE<<16)+(GPIO_SELECT_DIRA<<8)+ALL_OUTPUT;//ALL_INPUT;			//opcode to make A0-7 inputs
 	uint32_t portB = (GPIO_OPCODE_WRITE<<16)+(GPIO_SELECT_DIRB<<8)+ALL_OUTPUT;			//opcode to make B0-7 outputs
 	message_32b messageA = msgMkr(portA,24);											//assign all input message for SPI
 	message_32b messageB = msgMkr(portB,24);											//assign all output message for SPI
@@ -64,6 +65,9 @@ void writeGPIO(uint8_t CS, uint16_t bank, uint8_t byte){
 	 * @param byte	the state written to the GPIO pin (HIGH or LOW)
 	 */
     uint32_t operation = (GPIO_OPCODE_WRITE<<16)+(bank<<8)+byte;
+    printf("\t to send: ");
+    logBinary(operation);
+    printf("\n");
     message_32b message = msgMkr(operation,24);
     writeSPI(CS,message);
 }//writeGPIO

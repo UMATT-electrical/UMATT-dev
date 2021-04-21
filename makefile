@@ -21,7 +21,7 @@ OBJS = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 # name of the compiler
 CC = gcc
 # additional compiler flags to pass in
-CFLAGS = -L. -I$(INCLUDE_DIR)
+CFLAGS = -L. -I$(INCLUDE_DIR) -Wall -Wextra
 # libraries for the linker
 LIBS = -lwiringPi
 
@@ -35,6 +35,8 @@ all : $(OBJ_DIR) $(PROG)
 # links object files into executable
 $(PROG) : $(OBJS)
 	$(CC) $(CFLAGS) $(patsubst %.o, $(OBJ_DIR)/%.o, $(notdir $^)) -o $(PROG) $(LIBS)
+	@echo ""
+	@echo Successfully compiled to \"$(PROG)\"!
 
 # compiles source files into object files
 object/%.o : %.c $(HDRS)
@@ -48,5 +50,7 @@ $(OBJ_DIR) :
 # type "make clean" to use
 # Note: you can add your own commands to remove other things (e.g. output files)
 clean:
+	@clear
 	rm -rf object/
 	rm -f $(PROG)
+	@echo Finished Cleaning!

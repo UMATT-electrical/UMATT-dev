@@ -6,17 +6,17 @@
  */
 #include "spi.h"
 
-#include <unistd.h>
-#include <stdio.h>
+//MCP23s17 specific timings:
+//20ns between signal lo/hi on chip read @1.8V-5.5V (spec: table 1-4[4,5])
+const struct timespec *writeSleepTimer = (const struct timespec[]){{0,100l}};
+//90ns between signal hi/lo on chip write @1.8V-5.5V (spec: table 1-4[8,9])
+const struct timespec *readSleepTimer = (const struct timespec[]){{0,100l}};
 
-void logBinary(uint32_t data) {
-    for(int i=31; -1<i; i--) {
-        printf("%d", getBit(i, data));
-        if(i%8==0)
-            printf("  ");
-    }
-}
 
+/**FIXME: Add description
+ * 
+ * 
+ */ 
 message_32b msgMkr(uint32_t data, uint8_t size){
     message_32b msg;
     msg.operation = data;
@@ -24,45 +24,56 @@ message_32b msgMkr(uint32_t data, uint8_t size){
     return msg;
 }//msgMkr
 
-void writeSPI(uint8_t CS, struct Message_32b data){
-    digitalWrite(CS, LOW);
-    printf("\tsending:            ");
-    //MCP23s17 needs MSB->LSB (spec: figure 1-5)
-    //for (int i=0; i<data.length; i++){
-    for (int i=data.length-1; -1<i; i--){
-        for(int t=0; t<500000; t++){}
-        digitalWrite(MOSI,getBit(i,data.operation));
-        printf("%d", getBit(i,data.operation));
-        if((i)%8==0)
-            printf("  ");
-        //add sleep function for 0.005 seconds
-        for(int t=0; t<500000; t++){}
-        digitalWrite(CLK,HIGH);
-        //add sleep function for 0.005 seconds
-        for(int t=0; t<500000; t++){}
-        digitalWrite(CLK,LOW);
-    }
-    printf("\n");
-    digitalWrite(MOSI, LOW);
-    digitalWrite(CS, HIGH);
-    //add sleep function for 0.005 seconds
-}//writeSPI
-
+/**FIXME: Add description
+ * 
+ * 
+ */ 
 uint8_t getBit(uint8_t idx, uint32_t data){
     return (data & (1 << idx)) >> idx;
 }//getBit
 
+/** SPI Write for a MCP23s17
+ * @param CS:
+ * @param data:
+ * 
+ * See 3.2.3 for spec details on the "MCP23s17-E SP.pdf"
+ */ 
+void writeSPI(uint8_t CS, struct Message_32b data){
+    digitalWrite(CS, LOW);
+    for(int t=0; t<1000000; t++){}
+    //MCP23s17 needs MSB->LSB (spec: figure 1-5)
+    //This is why we loop from the top and work down
+    for (int i=data.length-1; -1<i; i--){
+        //MCP23s17 reads on a rising edge (spec: figure 1-5)
+        digitalWrite(MOSI,getBit(i,data.operation));
+        nanosleep(writeSleepTimer, NULL);
+        digitalWrite(CLK,HIGH);
+        nanosleep(writeSleepTimer, NULL);
+        digitalWrite(CLK,LOW);
+    }
+    digitalWrite(MOSI, LOW);
+    digitalWrite(CS, HIGH);
+}//writeSPI
+
+/**FIXME: Add description
+ * @param CS:
+ * @param length:
+ * 
+ * @return data: 
+ * 
+ * See spec details on the "MCP23s17-E SP.pdf"
+ */ 
 uint16_t readSPI(uint8_t CS, uint8_t length){
     uint16_t data;
     digitalWrite(CS, LOW);
     for (int i=0; i<length; i++){
-         digitalWrite(CLK,HIGH);
-         //add sleep function for 0.005 seconds
-        for(int t=0; t<1000000; t++){}
-        data = data<<1 + digitalRead(MISO);
+        //MCP23s17 writes on rising edge (spec: figure 1-6)
+        digitalWrite(CLK,HIGH);
+        nanosleep(readSleepTimer, NULL);
+        //FIXME: Should we be stuffing this in a Message_32b for consistency?
+        data = (data<<1) + digitalRead(MISO);
         digitalWrite(CLK,LOW);
-        for(int t=0; t<1000000; t++){}
-        //add sleep function for 0.005 seconds
+        nanosleep(readSleepTimer, NULL);
     }
     digitalWrite(CS, HIGH);
     return data;

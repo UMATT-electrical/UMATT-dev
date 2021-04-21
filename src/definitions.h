@@ -15,15 +15,19 @@
 #	define OUTPUT		0 		//Verify this is right
 #	define INPUT		1
 #endif
-							//Header pin assignments
-#define MOSI 		12		//10
-#define MISO 		13     	//11
-#define CLK  		14     	//12
-#define ADC_CS 		21     	//15
-#define GPIO2_CS	22     	//16
-#define GPIO3_CS	23     	//17
-#define POT_CS		24     	//18
-#define GPIO1_CS	10 //27     	//23
-#define GPIO4_CS	26     	//25
+
+/*Header pin assignments as per `$gpio readall` on a rpi b3+
+ * NOTE* we're using WiringPi pin numbering mode for portability.
+ * Pin:| Name      | wPi#  | Phys#  | P20CB# |
+ * ----|-----------|-------|--------|--------| */
+#define MOSI 		12		//19		10
+#define MISO 		13		//21		11
+#define CLK  		14		//23		12
+#define GPIO1_CS	16		//36		23
+#define GPIO2_CS	22		//31		16
+#define GPIO3_CS	23		//33		17
+#define GPIO4_CS	26		//32		25
+#define ADC_CS 		21		//29		15
+#define POT_CS		24		//35		18
 
 #endif
